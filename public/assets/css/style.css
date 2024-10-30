@@ -1,0 +1,620 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Roboto', sans-serif;
+    color: #6F8BA4;
+    background-color: #222;
+    overflow: -moz-scrollbars-none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+}
+a {
+    text-decoration: none;
+}
+
+
+.divider-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically, if needed */
+}
+
+.divider {
+    width: 100px;
+    height: 5px;
+    background: rgb(251,38,141);
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    z-index: 99;
+}
+
+.section-2 {
+    background-color: rgb(209,19,115);
+}
+.section-2 .title-color {
+    color: #ffffff;
+}
+.section-2 .text-muted{
+    font-size: 25px;
+    text-align: center !important;
+}
+
+.section-2 h1 {
+    text-align: center !important;
+}
+.section-2 p {
+    text-align: center !important;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.text-muted{
+    color: #ffffff!important
+}
+
+.title-color {
+    color: rgb(209,19,115);
+    text-align: center !important;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.title-color a{
+    color: #ffffff;
+}
+.section-3 .title-color {
+    color: #FFF;
+}
+.image-red-background{
+    position: relative;
+}
+.image-red-background::before {
+    border: 1px solid red;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transform: translateX(3%) translateY(-4%);
+    transform: translateX(3%) translateY(-4%);
+    background-color: #e12454;
+    z-index: -1;
+}
+
+.section-3{
+    background-color: #050505;
+}
+
+
+.btn-primary{
+    background-color: rgb(209,19,115);
+    border-color: rgb(209,19,115);
+}
+
+.btn-primary:hover{
+    background-color: rgb(225, 36, 84, 0.8);
+    border-color: #e12454;
+    box-shadow: none;
+}
+
+.btn-primary:active{
+    background-color: rgb(225, 36, 84, 0.8);
+    border-color: #e12454;
+    box-shadow: none;
+}
+
+
+.btn-primary:focus{
+    background-color: rgb(225, 36, 84, 0.8);
+    border-color: #e12454;
+    box-shadow: none;
+}
+
+.section-6{
+    background-color: rgb(255,255,255);
+}
+
+.section-6 .cards{
+    position: relative;
+}
+
+
+.section-6 .cards .card{
+    width: 100%;
+}
+
+.section-6 .cards .card .card-title{
+    font-size: 24px;
+    color: #e12454;
+}
+
+.section-6.cards .card .card-title a{
+    color: #ffffff;
+}
+
+
+.section-6 .cards .card .btn-primary{
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
+
+
+.section-4{
+    background-image: url('../images/banner22.jpg');
+    background-position: center center;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.section-4  .btn-primary{
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
+
+.section-4  .btn-primary i{
+    margin-left: 10px;
+}
+
+.section-4 .title{
+    color: #FFF;
+}
+
+.section-4 .help-container{
+    z-index: 99;
+    position: relative;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.section-4 .help-container p{
+    color: rgb(255, 255, 255, 0.8);
+}
+
+.footer{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.footer.gray-bg{
+    background-color: #f4f9fc;
+    padding-bottom: 10px;
+}
+
+
+
+.footer-menu a {
+    color: #6F8BA4;
+    line-height: 35px;
+}
+
+.footer-socials li a {
+    width: 45px;
+    height: 45px;
+    background: #6F8BA4;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100%;
+    padding-top: 12px;
+    margin-bottom: 10px;
+}
+
+
+.footer h4 {
+    color:#223a66;
+}
+.footer h4 a{
+    font-size: 16px;
+    color: #6F8BA4;
+}
+
+.footer h4 i{
+    font-size: 18px;
+}
+
+.accordion-item{
+    margin-bottom: 5px;
+}
+
+.accordion-item:first-of-type {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.accordion-item:last-of-type {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.accordion-item:not(:first-of-type) {
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.accordion-button:focus{
+    box-shadow:none;
+}
+
+.accordion-button{
+    background: rgb(0, 0, 0);
+    color:#FFF;
+}
+
+.accordion-button:not(.collapsed){
+    color: #FFF;
+    background-color: #000;
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.accordion-button::after{
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFF'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+.accordion-button:not(.collapsed)::after{
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFF'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+.contact-box a{
+    color:#6F8BA4;
+}
+
+
+
+    .btn {
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    /* Optional: Adjust h1 size */
+    h1 {
+        font-size: 1.5rem; /* You can adjust this size based on design */
+    }
+
+    /* Divider styling */
+    .divider-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .divider {
+        width: 250px;
+        height: 2px;
+        background-color: rgb(235, 10, 122);
+    }
+
+    .card {
+        max-width: 100% !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        word-wrap: break-word !important;
+        background-color: #000000 !important;
+        background-clip: border-box !important;
+        border: 1px solid rgba(0, 0, 0, .125) !important;
+        border-radius: .25rem !important;
+        padding: 1rem;
+    }
+
+    .card-title a {
+        display: block !important;
+        text-align: center !important;
+        font-weight: bold !important;
+        color: #FFF !important;
+        font-size: 25px !important; /* Adjust font size as needed */
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        height: 2.5em !important; /* Ensure it takes up 2 lines of text */
+    }
+
+    .card-text {
+        font-size: 18px !important;
+        color: rgb(208, 211, 211) !important;
+        text-align: center !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        height: 6em !important; /* Ensure it takes up 3 lines of text */
+        overflow: hidden !important;
+    }
+
+.call-now a{
+    color:#FFF;
+}
+
+.card-one ul li a{
+    color: #FFF;
+}
+    /* Center content inside the card */
+.card-body {
+     text-align: center;
+}
+
+
+.section-8{
+    background-color: white;
+}
+
+/* Ensure the iframe is responsive */
+.responsive-iframe {
+    width: 100%;
+    height: 315px; /* You can adjust the height as needed */
+}
+
+
+/* Make the container responsive */
+.section-8 .image-red-background {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+}
+
+/* Style the iframe to fill the container */
+.section-8 .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.slick-dots{
+    display: none !important;
+}
+
+/* Centering the entire section */
+.section-6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Slider container */
+.services-slider {
+    display: flex; /* Use flexbox to display items in a row */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    gap: 20px; /* Space between each slider item */
+    padding: 10px; /* Optional padding around the container */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding and border in total width */
+}
+
+/* Each slider item */
+.slider-item {
+    flex-shrink: 0; /* Prevent shrinking of flex items */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hide anything outside the bounds */
+    width: 600px; /* Fixed width for each image */
+    height: 300px; /* Fixed height for each image */
+    background-color: white; /* White background to create white space between images */
+    padding: 10px; /* Creates padding inside the slider-item for white space around the image */
+    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+}
+
+/* Image styles */
+.slider-item img {
+    width: 100%; /* Image takes full width of its container */
+    height: 100%; /* Image takes full height of its container */
+    object-fit: cover; /* Ensure the image maintains aspect ratio */
+    border-radius: 10px; /* Ensure the image itself has rounded corners */
+}
+
+.slider-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    z-index: 1; /* Bring the hovered image to the front */
+}
+
+/* WhatsApp Button CSS */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #25D366; /* WhatsApp green color */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    z-index: 1000; /* Ensure it stays on top */
+    animation: blink-animation 1s infinite; /* Apply the animation */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E; /* Darker green on hover */
+}
+
+.whatsapp-button img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Keyframes for blinking effect */
+@keyframes blink-animation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* For screens smaller than 1200px */
+@media (min-width: 1000px) and (max-width: 1200px)  {
+    .divider {
+        margin-left: 0; /* Adjust margin for smaller screens */
+    }
+
+    .section-2 .text-muted {
+        font-size: 20px; /* Adjust font size */
+    }
+
+    .title-color {
+        font-size: 40px; /* Adjust title font size */
+    }
+
+    .section-8 .image-red-background {
+        padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+    }
+
+    .card-title a {
+        font-size: 20px !important; /* Further reduce font size */
+    }
+
+    .card-text {
+        font-size: 20px !important;
+    }
+}
+
+/* For screens smaller than 768px */
+@media (min-width: 700px) and (max-width: 900px) {
+    .section-2 .text-muted {
+        font-size: 18px; /* Further adjust font size */
+    }
+
+    .title-color {
+        font-size: 30px; /* Further adjust title font size */
+    }
+
+    .section-4 .help-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .section-8 .image-red-background {
+        padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+    }
+    .image-red-background {
+        margin-bottom: 1.5rem;
+    }
+
+    .about-block {
+        font-size: 1.1rem;
+    }
+
+    .close {
+        font-size: 30px; /* Smaller close button on smaller screens */
+        top: 10px;
+        right: 20px;
+    }
+
+    .modal-content {
+        width: 95%; /* Adjust width for smaller screens */
+        max-width: 95%; /* Adjust max-width for smaller screens */
+        margin-top: 50px;
+    }
+
+    .instagram-gallery .image {
+        margin: 5px; /* Reduce margin on smaller screens */
+    }
+
+    .instagram-gallery .image img {
+        max-width: 150px; /* Adjust max-width for smaller screens */
+    }
+    .card-title a {
+        font-size: 25px !important; /* Reduce font size for smaller screens */
+        height: 3.5em !important; /* Adjust height for 2 lines */
+    }
+
+    .card-text {
+        font-size: 23px !important;
+        height: 4.8em !important; /* Adjust height for 3 lines */
+    }
+
+    .slider-item {
+        width: 600px; /* Adjust size for tablets */
+        height: 200px; /* Adjust height for tablets */
+    }
+}
+
+/* For screens smaller than 480px */
+@media (min-width: 480px) and (max-width: 570px)  {
+    .divider {
+        width: 80px; /* Adjust width for very small screens */
+    }
+
+    .section-2 .text-muted {
+        font-size: 16px; /* Adjust font size for very small screens */
+    }
+
+    .title-color {
+        font-size: 25px; /* Adjust title font size for very small screens */
+    }
+
+    .section-4 .help-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .about-block {
+        font-size: 1rem;
+    }
+
+    .close {
+        font-size: 24px; /* Even smaller close button on extra small screens */
+        top: 5px;
+        right: 15px;
+    }
+
+    .modal-content {
+        width: 100%; /* Full width on mobile devices */
+        max-width: 100%; /* Full max-width on mobile devices */
+        margin-top: 50px;
+    }
+
+    .instagram-gallery .image img {
+        max-width: 100px; /* Further adjust max-width for very small screens */
+    }
+
+    .whatsapp-button {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 8px 16px; /* Reduce padding */
+    }
+
+    .whatsapp-button img {
+        width: 30px; /* Smaller WhatsApp icon */
+        height: 30px; /* Smaller WhatsApp icon */
+    }
+    .card-title a {
+        font-size: 30px !important; /* Reduce font size for smaller screens */
+        height: 2.2em !important; /* Adjust height for 2 lines */
+    }
+
+    .card-text {
+        font-size: 23px !important;
+        height: 4.8em !important; /* Adjust height for 3 lines */
+        overflow: hidden;
+    }
+
+    .slider-item {
+        width: 300px; /* Adjust size for mobile */
+        height: 100px; /* Adjust height for mobile */
+    }
+}
