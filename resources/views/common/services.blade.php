@@ -70,7 +70,6 @@
     </div>
 </section>
 
-
 <section class="section-3 py-5">
     <div class="container">
         <h2 class="title-color mb-4 h1 text-center">GAMES & INTERACTIVES</h2>

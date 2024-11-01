@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/navebar.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/favicon.ico')}}" type="image/x-icon">
-
     <meta name="_token" content="{{ csrf_token() }}">
 </head>
 <body>

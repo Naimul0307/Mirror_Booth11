@@ -22,11 +22,11 @@
                         </div>
                         <a href="{{ route('blog-detail',$blog->id) }}" class="btn btn-primary mt-4">Details <i class="fa-solid fa-angle-right"></i></a>
                     </div>
-                </div> 
-                @endforeach                  
+                </div>
+                @endforeach
                 @endif
-                
+
             </div>
-        </div>                
+        </div>
     </div>
 </section>

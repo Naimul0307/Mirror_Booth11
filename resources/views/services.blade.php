@@ -36,4 +36,11 @@
         </div>
     </div>
 </section>
+
+
+@include('common.review')
+
+@include('common.company')
+
 @endsection
+

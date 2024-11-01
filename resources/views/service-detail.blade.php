@@ -96,4 +96,11 @@
 </section>
 @endif
 
+
+@include('common.review')
+
+
+@include('common.company')
+
+
 @endsection

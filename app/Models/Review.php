@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TempFile extends Model
+class Review extends Model
 {
     use HasFactory;
-    protected $table = 'temp_files';
+    protected $table = 'reviews';
+    public function reviews(){
+        return $this->hasMany(Service::class);
+    }
 }

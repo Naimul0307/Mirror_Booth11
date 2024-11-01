@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\BlogController as AdminBlogController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
 use App\Http\Controllers\admin\PageController;
@@ -36,7 +37,7 @@ Route::post('/save-comment',[ BlogController::class, 'saveComment' ])->name('sav
 Route::get('/contact',[ ContactController::class, 'index' ]);
 Route::post('/send-email',[ ContactController::class, 'sendEmail' ])->name('sendContactEmail');
 
-Route::get('/reviews', [ReviewController::class, 'showReviews']);
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 
 
 Route::group(['prefix' => 'account'],function(){
@@ -77,8 +78,6 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('/service/{id}/remove-gallery-image', [ServiceController::class, 'removeGalleryImage'])->name('service.remove.gallery.image');
 
         Route::get('/services',[ServiceController::class,'index'])->name('serviceList');
-        Route::get('/services/export/', [ServiceController::class, 'export'])->name('serviceExport');
-
         Route::get('/services/edit/{id}',[ServiceController::class,'edit'])->name('service.edit');
 
         Route::post('/services/edit/{id}',[ServiceController::class,'update'])->name('service.edit.update');
@@ -125,6 +124,16 @@ Route::group(['prefix' => 'admin'],function(){
         // Setting Routes
         Route::get('/settings',[SettingsController::class,'index'])->name('settings.index');
         Route::post('/settings',[SettingsController::class,'save'])->name('settings.save');
+
+        //Review Routes
+        Route::get('/reviews',[AdminReviewController::class,'index'])->name('reviewList');
+        Route::get('/reviews/create', [AdminReviewController::class, 'create'])->name('reviews.create.from');
+        Route::post('/reviews/create',[AdminReviewController::class,'save'])->name('reviews.create');
+
+        Route::get('/reviews/edit/{id}',[AdminReviewController::class,'edit'])->name('reviews.edit');
+        Route::post('/reviews/edit/{id}',[AdminReviewController::class,'update'])->name('reviews.update');
+        Route::post('/reviews/delete/{id}',[AdminReviewController::class,'delete'])->name('reviews.delete');
+        Route::post('/reviews/{id}/remove-image', [AdminReviewController::class, 'removeMainImage'])->name('reviews.remove.image');
     });
 });
 

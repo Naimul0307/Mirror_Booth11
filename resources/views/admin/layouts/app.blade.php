@@ -78,6 +78,12 @@
                                     <p>Manage Pages</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('reviewList') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reviews</p>
+                                </a>
+                            </li>
 							<li class="nav-item">
                                 <a href="{{ route('settings.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
