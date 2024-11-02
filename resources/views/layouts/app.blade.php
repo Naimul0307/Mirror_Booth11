@@ -190,7 +190,7 @@
                     <div class="col-lg-6">
                         <div class="copyright">
                             @if (!empty(getSettings()) && getSettings()->copy != '')
-                            {{ getSettings()->copy }}<a href="https://www.linkedin.com/in/naimulalambd/">Develope By Naimul Alam</a>
+                            {{ getSettings()->copy }}</a>
                             @endif
                         </div>
                     </div>

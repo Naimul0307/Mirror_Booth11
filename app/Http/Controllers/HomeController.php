@@ -16,9 +16,9 @@ class HomeController extends Controller
 
         // Limit to 8 services for each category
         $limitedServices = [
-            1 => $groupedServices->get(1, collect())->take(8), // Photo Booths
-            2 => $groupedServices->get(2, collect())->take(8), // Games & Interactives
-            3 => $groupedServices->get(3, collect())->take(8)  // Video Booths
+            1 => $groupedServices->get(1, collect())->take(4), // Photo Booths
+            2 => $groupedServices->get(2, collect())->take(4), // Games & Interactives
+            3 => $groupedServices->get(3, collect())->take(4)  // Video Booths
         ];
 
         $data['limitedServices'] = $limitedServices; // Pass to the view

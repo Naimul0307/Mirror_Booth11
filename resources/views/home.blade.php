@@ -14,7 +14,7 @@
                             <div class="block">
                                 <h1 class="mb-3 mt-3">PHOTOBOOTH INTERACTIVE ENTERTAINMENT EXPERIENCES</h1>
                                 <div class="btn-container">
-                                    <a href="{{ url('/contact')}}" target="_blank" class="btn btn-primary">Contact Now <i class="icofont-simple-right ml-2"></i></a>
+                                    <a href="{{ route('contact') }}" class="btn btn-primary">Contact Now <i class="icofont-simple-right ml-2"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,8 @@
                 <div class="divider mb-3"></div>
             </div>
             <div class="mt-2 mb-3 text-muted">Award Winning Interactive Photo Booth Services In Dubai</div>
-            <p>A professional and a well-experienced photobooth supplier in the UAE. We deliver client satisfaction and event perfection in all of our services. Our goal is to make memorable and meaningful event for everyone.</p>
+            <p>A professional and a well-experienced photobooth supplier in the UAE. We deliver client satisfaction and event perfection in all of our services.
+            <br>Our goal is to make memorable and meaningful event for everyone.</p>
         </div>
     </div>
 </section>
@@ -46,3 +47,14 @@
 @include('common.company')
 
 @endsection
+
+<script>
+    $(document).ready(function() {
+        $('.btn-container a').click(function(e) {
+            e.preventDefault(); // Prevent the default anchor click behavior
+            var url = $(this).attr('href'); // Get the URL from the link
+            // Optionally, perform any actions before redirecting
+            window.location.href = url; // Redirect to the contact page
+        });
+    });
+</script>
