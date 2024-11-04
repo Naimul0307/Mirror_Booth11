@@ -8,18 +8,25 @@ use App\Models\Setting;
 use App\Models\FeaturedService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
 
 class SettingsController extends Controller
 {
     public function index(){
         $settings = Setting::find(1);
 
-        $services = Service::orderBy('name','asc')->get();
-        $featuredServices = FeaturedService::select('services.name','featured_services.*')
-                            ->leftJoin('services','services.id','featured_services.service_id')
+        $categories = Category::orderBy('name','asc')->get();
+        $featuredServices = FeaturedService::select('categories.name','featured_services.*')
+                            ->leftJoin('categories','categories.id','featured_services.category_id')
                             ->orderBy('sort_order','ASC')->get();
 
-        return view('admin.settings',['settings'=>$settings,'services' => $services,'featuredServices'=>$featuredServices]);
+        // $services = Service::orderBy('name','asc')->get();
+        // $featuredServices = FeaturedService::select('services.name','featured_services.*')
+        //                     ->leftJoin('services','services.id','featured_services.service_id')
+        //                     ->orderBy('sort_order','ASC')->get();
+
+
+        return view('admin.settings',['settings'=>$settings,'categories' => $categories,'featuredServices'=>$featuredServices]);
     }
 
     public function save(Request $request){
@@ -28,15 +35,15 @@ class SettingsController extends Controller
             'website_title' => 'required'
         ]);
 
-        parse_str($request->services,$serviceArray);
+        parse_str($request->categories,$categoryArray);
 
-        if (!empty($serviceArray['service'])){
+        if (!empty($categoryArray['category'])){
 
             FeaturedService::truncate();
 
-            foreach($serviceArray['service'] as $key => $service) {
+            foreach($categoryArray['category'] as $key => $category) {
                 $featuredService = new FeaturedService;
-                $featuredService->service_id = $service;
+                $featuredService->category_id = $category;
                 $featuredService->sort_order = $key;
                 $featuredService->save();
             }

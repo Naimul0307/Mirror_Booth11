@@ -11,7 +11,7 @@ function getSettings(){
 }
 
 function getServices(){
-    return FeaturedService::leftJoin('services','services.id','featured_services.service_id')
+    return FeaturedService::leftJoin('categories','categories.id','featured_services.category_id')
     ->orderBy('sort_order','ASC')
     ->get();
 }
