@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Validator;
 class BlogController extends Controller
 {
     public function index() {
-    
-        $blogs = Blog::where('status',1)->orderBy('created_at','DESC')->get();
-        
+
+        $blogs = Blog::where('status',1)->orderBy('created_at','asc')->get();
+
         $data['blogs'] = $blogs;
 
         return view('blog',$data);
@@ -38,7 +38,7 @@ class BlogController extends Controller
     }
 
     public function saveComment(Request $request) {
-        
+
         // /new Comment
 
         $validator = Validator::make($request->all(),[

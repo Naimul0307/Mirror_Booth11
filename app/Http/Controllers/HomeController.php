@@ -9,7 +9,7 @@ use App\Models\Service;
 class HomeController extends Controller
 {
     public function index() {
-        $services = Service::where('status', 1)->orderBy('created_at', 'ASC')->get(); // Get all active services
+        $services = Service::where('status', 1)->orderBy('id', 'asc')->get(); // Get all active services
 
         // Group services by category
         $groupedServices = $services->groupBy('category_id');

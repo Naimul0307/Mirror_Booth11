@@ -13,47 +13,47 @@
             <div class="services-slider">
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review1.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review1.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review2.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review2.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review3.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review3.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review4.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review4.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review5.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review5.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review6.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review6.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review7.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review7.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review8.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review8.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
                 <div class="supporter-logo">
                     <a href="https://www.google.com/maps?cid=12798897483863718361">
-                        <img src="{{ asset('uploads/review/review9.PNG') }}" class="img-fluid" alt="Runtastic">
+                        <img src="{{ asset('uploads/review/review9.webp') }}" class="img-fluid" alt="Runtastic">
                     </a>
                 </div>
             </div>

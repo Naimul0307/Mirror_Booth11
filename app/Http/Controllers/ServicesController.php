@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ServicesController extends Controller
 {
     public function index()  {
-        $services = Service::where('status',1)->orderBy('created_at','ASC')->get();
+        $services = Service::where('status',1)->orderBy('id','asc')->get();
         $data['services'] = $services;
         return view('services',$data);
     }

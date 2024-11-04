@@ -145,7 +145,7 @@
         url: "{{ route('tempUpload') }}",
         maxFiles: 1,
         addRemoveLinks: true,
-        acceptedFiles: "image/jpeg,image/png,image/gif",
+        acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },
@@ -159,7 +159,7 @@
         url: "{{ route('uploadGalleryImage') }}",  // Assuming same route for temporary uploads
         maxFiles: null,
         addRemoveLinks: true,
-        acceptedFiles: "image/jpeg,image/png,image/gif",
+        acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },

@@ -15,7 +15,8 @@ class CreateFeaturedServicesTable extends Migration
     {
         Schema::create('featured_services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('service_id');
+            // $table->unsignedBigInteger('service_id');
+            $table->unsignedBigInteger('category_id');
             $table->integer('sort_order');
             $table->timestamp('created_at')->useCurrent()->useCurrentOnUpdate();
             $table->timestamp('updated_at')->nullable();

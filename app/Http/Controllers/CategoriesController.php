@@ -12,7 +12,7 @@ class CategoriesController extends Controller
 
         $categorySelected = '';
 
-        $categories = Category::orderBy('name','ASC')->with('services')->where('status',1)->get();
+        $categories = Category::orderBy('id','asc')->with('services')->where('status',1)->get();
         $services = Service::where('status',1);
 
         if(!empty($id)){
