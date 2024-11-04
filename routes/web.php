@@ -26,7 +26,7 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/about-us',[ HomeController::class, 'about' ])->name('about');
 Route::get('/terms',[ HomeController::class, 'terms' ])->name('terms');
 Route::get('/privacy',[ HomeController::class, 'privacy' ])->name('privacy');
-Route::get('/services',[ ServicesController::class, 'index' ]);
+Route::get('/services',[ ServicesController::class, 'index' ])->name('services');
 Route::get('/services/detail/{id}',[ ServicesController::class, 'detail' ]);
 Route::get('/category/{id}',[CategoriesController::class, 'index'])->name('categories.index');
 

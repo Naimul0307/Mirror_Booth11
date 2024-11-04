@@ -118,37 +118,36 @@
                                             <textarea name="contact_card_three" id="contact_card_three" class="summernote" >{!! (!empty($settings->contact_card_three)) ? $settings->contact_card_three : '' !!}</textarea>
                                         </div>
                                     </div> --}}
-{{--
+
                                     <div class="col-md-6">
-                                        <label for="">Featured Services</label>
+                                        <label for="">Featured Categories</label>
                                         <div class="row">
                                             <div class="col">
-                                                <select name="service" id="service" class="form-control">
-                                                    @if($services)
-                                                    @foreach ($services as $service)
-                                                        <option value="{{  $service->id }}">{{ $service->name }}</option>
+                                                <select name="category" id="category" class="form-control">
+                                                    @if($categories)
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{  $category->id }}">{{ $category->name }}</option>
                                                     @endforeach
                                                     @endif
                                                 </select>
                                             </div>
                                             <div class="col">
-                                                <button onclick="addService();" type="button" class="btn btn-primary">
-                                                    Add Service
+                                                <button onclick="addCategory();" type="button" class="btn btn-primary">
+                                                    Add Category
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
-                                            <div class="col-md-12" id="services-wrapper">
-
+                                            <div class="col-md-12" id="categories-wrapper">
                                                 @if ($featuredServices->isNotEmpty())
-                                                    @foreach ($featuredServices as $service)
-                                                    <div class="ui-state-default" data-id='{{ $service->service_id }}' id='service-{{ $service->service_id }}''>
+                                                    @foreach ($featuredServices as $category)
+                                                    <div class="ui-state-default" data-id='{{ $category->category_id }}' id='category-{{ $category->category_id }}''>
                                                         <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-                                                        {{ $service->name }}
-                                                        <button type="button" onclick="deleteService({{ $service->service_id }} );" class='btn btn-danger btn-sm'>Delete</button>
+                                                        {{ $category->name }}
+                                                        <button type="button" onclick="deleteService({{ $category->category_id }} );" class='btn btn-danger btn-sm'>Delete</button>
                                                     </div>
                                                     @endforeach
-                                                @endif --}}
+                                                @endif
                                                 {{-- <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</div>
                                                 <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</div>
                                                 <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</div>
@@ -182,32 +181,33 @@
 <script type="text/javascript">
 
     function deleteService(id) {
-        $("#service-"+id).remove();
+        $("#category-"+id).remove();
     }
 
     $( function() {
-        $( "#services-wrapper" ).sortable();
+        $( "#categories-wrapper" ).sortable();
     } );
 
-    function addService(){
-        var serviceId = $("#service").val()
-        var serviceName = $("#service option:selected").text();
+    function addCategory(){
+        var categoryId = $("#category").val()
+        var categoryName = $("#category option:selected").text();
 
-        var html = `<div class="ui-state-default" data-id='${serviceId}' id=service-${serviceId}><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>${serviceName} <button type="button" onclick="deleteService(${serviceId});" class='btn btn-danger btn-sm'>Delete</button></div>`;
+        var html = `<div class="ui-state-default" data-id='${categoryId}' id=category-${categoryId}><span
+             class="ui-icon ui-icon-arrowthick-2-n-s"></span>${categoryName} <button type="button" onclick="deleteService(${categoryId});" class='btn btn-danger btn-sm'>Delete</button></div>`;
 
         var isFound = false;
 
-        $("#services-wrapper .ui-state-default").each(function(){
+        $("#categories-wrapper .ui-state-default").each(function(){
             var id = $(this).attr('data-id');
-            if(id == serviceId){
+            if(id == categoryId){
                 isFound = true;
             }
         });
 
         if(isFound == true){
-            alert("You can not select same service again.");
+            alert("You can not select same category again.");
         } else {
-            $("#services-wrapper").append(html);
+            $("#categories-wrapper").append(html);
         }
     }
 
@@ -215,11 +215,11 @@
         event.preventDefault();
         $("button[type='submit']").prop('disabled',true);
 
-        var servicesString = $("#services-wrapper").sortable('serialize');
-        //console.log(servicesString);
-        //return false;
+        var categoriesString = $("#categories-wrapper").sortable('serialize');
+        // console.log(categoriesString);
+        // return false;
         var data = $("#settingsFrom").serializeArray();
-        data[data.length] = {name: 'services', value : servicesString};
+        data[data.length] = {name: 'categories', value : categoriesString};
 
         $.ajax({
             url: '{{ route("settings.save") }}',

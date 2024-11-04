@@ -32,11 +32,18 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Services <i class="fas fa-caret-down"></i></a>
                         <ul class="dropdown-menu">
-                            @if(!empty(getCategories()))
+                            {{-- @if(!empty(getCategories()))
                             @foreach (getCategories() as $category)
                             <li><a class="dropdown-item" href="{{ url("/category/".$category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                             <li><a class="dropdown-item" href="{{ url('/services') }}">View All</a></li>
+                            @endif --}}
+
+                            @if (!empty(getServices()))
+                            @foreach (getServices() as $category)
+                            <li><a class="dropdown-item" href="{{ route('categories.index', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+                            @endforeach
+                            <li><a class="dropdown-item" href="{{ route('services') }}">View All</a></li>
                             @endif
                         </ul>
                     </li>
