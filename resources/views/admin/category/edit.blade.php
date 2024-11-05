@@ -37,7 +37,13 @@
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" value="{{ $category->name }}" name="name" id="name" class="form-control">
+                                    <p class="error name-error"></p>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="name">Slug</label>
+                                    <input type="text" readonly name="slug" id="slug" value="{{ $category->slug }}" class="form-control">
+                                    <p class="error slug-error"></p>
                                 </div>
 
                                 <div class="form-group mt-4">
@@ -87,6 +93,21 @@
                 }
             }
         });
+    });
+
+
+    $("#name").change(function(){
+        $("button[type='submit']").prop('disabled',true);
+        $.ajax({
+            url: '{{ route("category.slug") }}',
+            type: 'get',
+            data: {name: $(this).val()},
+            dataType: 'json',
+            success: function(response){
+                $("button[type='submit']").prop('disabled',false);
+                $("#slug").val(response.slug);
+            }
+        })
     });
 </script>
 

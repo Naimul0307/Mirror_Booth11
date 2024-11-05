@@ -22,9 +22,9 @@ class BlogController extends Controller
         if (!empty($request->keyword)) {
             $blogs = $blogs->where('name','like','%'.$request->keyword.'%');
         }
-        
+
         $blogs = $blogs->paginate(20);
-        
+
         $data['blogs'] = $blogs;
 
         return view('admin.blog.list',$data);
@@ -80,14 +80,14 @@ class BlogController extends Controller
                 $blog->save();
 
                 File::delete($sourcePath);
-            
+
             }
 
             $request->session()->flash('success','Blog Created Successfully');
 
             return response()->json([
                 'status' => 200,
-                'message' => 'Blog Created Successfully'                                       
+                'message' => 'Blog Created Successfully'
             ]);
 
         } else {
@@ -102,12 +102,12 @@ class BlogController extends Controller
 
     public function edit($id, Request $request) {
         $blog = Blog::where('id',$id)->first();
-        
+
         if(empty($blog)) {
             $request->session()->flash('error','Record not found in DB');
             return redirect()->route('blogList');
         }
-        
+
         $data['blog'] = $blog;
         return view('admin.blog.edit',$data);
     }
@@ -117,7 +117,7 @@ class BlogController extends Controller
             'name' => 'required',
             'slug' => 'required|unique:blogs'
         ]);
-        
+
         if($validator->passes()) {
             // Form validated successfully
 
@@ -126,7 +126,7 @@ class BlogController extends Controller
             if (empty($blog)) {
                 $request->session()->flash('error','Record not found');
                 return response()->json([
-                    'status' => 0,                    
+                    'status' => 0,
                 ]);
             }
 
@@ -155,7 +155,7 @@ class BlogController extends Controller
                 $img->fit(360,220);
                 $img->save($dPath);
 
-                // Delete old small thumbnail                
+                // Delete old small thumbnail
                 $sourcePathSmall = './uploads/blogs/thumb/small/'.$oldImageName;
                 File::delete($sourcePathSmall);
 
@@ -167,7 +167,7 @@ class BlogController extends Controller
                 });
                 $img->save($dPath);
 
-                // Delete old small thumbnail                
+                // Delete old small thumbnail
                 $sourcePathLarge = './uploads/blogs/thumb/large/'.$oldImageName;
                 File::delete($sourcePathLarge);
 
@@ -182,7 +182,7 @@ class BlogController extends Controller
 
             return response()->json([
                 'status' => 200,
-                'message' => 'Blog updated Successfully'                                       
+                'message' => 'Blog updated Successfully'
             ]);
 
         } else {
@@ -195,7 +195,7 @@ class BlogController extends Controller
     }
 
     public function delete($id, Request $request) {
-        
+
         $blog = Blog::where('id',$id)->first();
 
         if (empty($blog)) {

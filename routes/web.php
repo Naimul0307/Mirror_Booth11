@@ -3,10 +3,10 @@
 use App\Http\Controllers\admin\BlogController as AdminBlogController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
 use App\Http\Controllers\admin\PageController;
+use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\TempImageController;
@@ -20,6 +20,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 Route::get('/',[HomeController::class,'index']);
@@ -84,6 +86,8 @@ Route::group(['prefix' => 'admin'],function(){
 
         Route::post('/services/delete/{id}',[ServiceController::class,'delete'])->name('service.delete');
 
+        Route::get('/services/get-slug',[ServiceController::class,'getSlug'])->name('service.slug');
+
         //category route
         Route::get('/category',[CategoryController::class,'index'])->name('categoryList');
         Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
@@ -91,6 +95,9 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('/category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
         Route::post('/category/edit/{id}',[CategoryController::class,'update'])->name('category.update');
         Route::post('/category/delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
+
+        Route::get('/category/get-slug',[CategoryController::class,'getSlug'])->name('category.slug');
+
 
         // Blog Routes
         Route::get('/blog/create',[AdminBlogController::class,'create'])->name('blog.create.form');

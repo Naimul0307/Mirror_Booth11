@@ -63,7 +63,8 @@
                             <table class="table">
                                 <tr>
                                     <th width="50">Id</th>
-                                    <th>Title</th>
+                                    <th width="50">Name</th>
+                                    <th width="50">Slug</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
                                     <th width="100">Action</th>
@@ -73,6 +74,7 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td>{{ $category->slug }}</td>
                                     <td>{{ date('d/m/Y',strtotime($category->created_at)) }}</td>
                                     <td>
                                         @if($category->status == 1)

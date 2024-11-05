@@ -65,9 +65,10 @@
                             <table class="table">
                                 <tr>
                                     <th width="50">Id</th>
+                                    <th width="50">Name</th>
+                                    <th width="50">Slug</th>
+                                    <th width="50">Category Name</th>
                                     <th width="80">Image</th>
-                                    <th width="50">Title</th>
-                                    <th width="50">Category</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
                                     <th width="100">Action</th>
@@ -76,6 +77,9 @@
                                     @foreach ($services as $service)
                                 <tr>
                                     <td>{{ $service->id }}</td>
+                                    <td>{{ $service->name }}</td>
+                                    <td>{{ $service->slug }}</td>
+                                    <td>{{ $service->categoryName }}</td>
                                     <td>
                                         @if(!empty($service->image))
                                         <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" width="50">
@@ -83,8 +87,6 @@
                                         <img src="{{ asset('uploads/placeholder.jpg') }}" alt="" width="50">
                                         @endif
                                     </td>
-                                    <td>{{ $service->name }}</td>
-                                    <td>{{ $service->categoryName }}</td>
                                     <td>{{ date('d/m/Y',strtotime($service->created_at)) }}</td>
                                     <td>
                                         @if($service->status == 1)

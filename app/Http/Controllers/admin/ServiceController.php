@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\TempFile;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -41,6 +42,7 @@ class ServiceController extends Controller
     public function save(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:services',
+            'slug' => 'required|unique:services',
             'category' => 'required',
         ]);
 
@@ -49,6 +51,7 @@ class ServiceController extends Controller
 
             $service = new Service;
             $service->name = $request->name;
+            $service->slug = $request->slug;
             $service->category_id = $request->category;
             $service->description = $request->description;
             $service->short_desc = $request->short_description;
@@ -161,6 +164,7 @@ class ServiceController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:services,name,' . $service->id . ',id',
+            'slug' => 'required|unique:services,slug,' . $service->id . ',id',
             'category' => 'required',
             'videos_link' => 'nullable|url',
             'short_description' => 'nullable',
@@ -180,6 +184,7 @@ class ServiceController extends Controller
             $oldImageName = $service->image;
 
             $service->name = $request->name;
+            $service->slug = $request->slug;
             $service->category_id = $request->category;
             $service->description = $request->description;
             $service->short_desc = $request->short_description;
@@ -390,6 +395,15 @@ class ServiceController extends Controller
 
         return response([
             'status' => 1
+        ]);
+    }
+
+
+    public function getSlug(Request $request){
+        $slug = SlugService::createSlug(Service::class, 'slug', $request->name);
+        return response()->json([
+            'status' => true,
+            'slug' => $slug
         ]);
     }
 }

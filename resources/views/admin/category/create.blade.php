@@ -40,6 +40,12 @@
                                     <p class="error name-error"></p>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="name">Slug</label>
+                                    <input type="text" readonly name="slug" id="slug" class="form-control">
+                                    <p class="error slug-error"></p>
+                                </div>
+
                                 <div class="form-group mt-4">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
@@ -88,6 +94,20 @@
                 }
             }
         });
+    });
+
+    $("#name").change(function(){
+        $("button[type='submit']").prop('disabled',true);
+        $.ajax({
+            url: '{{ route("category.slug") }}',
+            type: 'get',
+            data: {name: $(this).val()},
+            dataType: 'json',
+            success: function(response){
+                $("button[type='submit']").prop('disabled',false);
+                $("#slug").val(response.slug);
+            }
+        })
     });
 </script>
 

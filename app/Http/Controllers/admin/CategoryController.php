@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,11 +34,13 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories',
+            'slug' => 'required|unique:categories',
         ]);
 
         if($validator->passes()) {
             $category = new Category;
             $category->name = $request->name;
+            $category->slug = $request->slug;
             $category->status = $request->status;
 
             $category->save();
@@ -77,6 +80,7 @@ class CategoryController extends Controller
 
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories,name,'.$category->id.',id',
+            'slug' => 'required|unique:categories,slug,'.$category->id.',id',
         ]);
 
         if($validator->passes()) {
@@ -90,6 +94,7 @@ class CategoryController extends Controller
             }
 
             $category->name = $request->name;
+            $category->slug = $request->slug;
             $category->status = $request->status;
             $category->save();
 
@@ -133,5 +138,12 @@ class CategoryController extends Controller
 
     }
 
+    public function getSlug(Request $request){
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        return response()->json([
+            'status' => true,
+            'slug' => $slug
+        ]);
+    }
 
 }

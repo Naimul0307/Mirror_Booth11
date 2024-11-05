@@ -40,6 +40,13 @@
                                     <input type="text" value="{{ $service->name }}" name="name" id="name" class="form-control">
                                     <p class="error name-error"></p>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="name">Slug</label>
+                                    <input type="text" readonly name="slug" id="slug" value="{{ $service->slug }}" class="form-control">
+                                    <p class="error slug-error"></p>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="category">Category</label>
                                     <select name="category" id="category" class="form-control">
@@ -276,6 +283,21 @@
     // Remove video link fields
     $(document).on('click', '.remove-link', function() {
         $(this).closest('.input-group').remove();
+    });
+
+
+    $("#name").change(function(){
+        $("button[type='submit']").prop('disabled',true);
+        $.ajax({
+            url: '{{ route("service.slug") }}',
+            type: 'get',
+            data: {name: $(this).val()},
+            dataType: 'json',
+            success: function(response){
+                $("button[type='submit']").prop('disabled',false);
+                $("#slug").val(response.slug);
+            }
+        })
     });
 </script>
 @endsection

@@ -10,20 +10,20 @@ function getSettings(){
     return Setting::first();
 }
 
-function getServices(){
+function getCategories(){
     return FeaturedService::leftJoin('categories','categories.id','featured_services.category_id')
     ->orderBy('sort_order','ASC')
     ->get();
 }
 
-function getCategories()
-{
-    return Category::orderBy('name','ASC')
-    ->with('services')
-    ->orderBy('id','DESC')
-    ->where('status',1)
-    ->get();
-}
+// function getCategories()
+// {
+//     return Category::orderBy('name','ASC')
+//     ->with('services')
+//     ->orderBy('id','DESC')
+//     ->where('status',1)
+//     ->get();
+// }
 
 function getLatestBlog(){
     $blogs = Blog::where('status',1)->orderBy('created_at','DESC')->take(6)->get();
