@@ -29,8 +29,8 @@ Route::get('/about-us',[ HomeController::class, 'about' ])->name('about');
 Route::get('/terms',[ HomeController::class, 'terms' ])->name('terms');
 Route::get('/privacy',[ HomeController::class, 'privacy' ])->name('privacy');
 Route::get('/services',[ ServicesController::class, 'index' ])->name('services');
-Route::get('/services/detail/{id}',[ ServicesController::class, 'detail' ]);
-Route::get('/category/{id}',[CategoriesController::class, 'index'])->name('categories.index');
+Route::get('/services/detail/{slug}',[ ServicesController::class, 'detail'])->name('service.detail');
+Route::get('/category/{slug}', [CategoriesController::class, 'index'])->name('categories.index');
 
 Route::get('/faq',[ FaqController::class, 'index' ]);
 Route::get('/blog',[ BlogController::class, 'index' ])->name('blog.front');

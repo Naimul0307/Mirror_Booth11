@@ -8,26 +8,27 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    public function index($id)  {
-
+    public function index($slug)  {
         $categorySelected = '';
 
-        $categories = Category::orderBy('id','asc')->with('services')->where('status',1)->get();
-        $services = Service::where('status',1);
+        // Order categories by ID and retrieve active ones with their services
+        $categories = Category::where('status', 1)
+                               ->orderBy('id', 'asc')
+                               ->with('services')
+                               ->get();
 
-        if(!empty($id)){
-            $category = Category::where('id',$id)->first();
-            $services = $services->where('category_id',$category->id);
-            $categorySelected = $category->id;
-        }
+        // Find the category by slug
+        $category = Category::where('slug', $slug)->firstOrFail();
 
-        $services = $services->paginate(100);
+        // Get services in the selected category and paginate results
+        $services = Service::where('status', 1)
+                            ->where('category_id', $category->id)
+                            ->paginate(100);
 
         $data['category'] = $category;
         $data['services'] = $services;
-        $data['categorySelected'] = $categorySelected;
+        $data['categorySelected'] = $category->id;
 
-        return view('category',$data);
+        return view('category', $data);
     }
-
 }

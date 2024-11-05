@@ -13,8 +13,8 @@ class ServicesController extends Controller
         return view('services',$data);
     }
 
-    public function detail($id) {
-        $service = Service::where('id', $id)->first();
+    public function detail($slug) {
+        $service = Service::where('slug', $slug)->first();
 
         if (empty($service)) {
             return redirect('/');

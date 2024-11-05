@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu">
                             @if (!empty(getCategories()))
                             @foreach (getCategories() as $category)
-                            <li><a class="dropdown-item" href="{{ route('categories.index', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('categories.index', ['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
                             @endforeach
                             <li><a class="dropdown-item" href="{{ route('services') }}">View All</a></li>
                             @endif
@@ -67,9 +67,9 @@
                     <ul class="dropdown-menu">
                         @if(!empty(getCategories()))
                         @foreach (getCategories() as $category)
-                        <li><a class="dropdown-item" href="{{ url("/category/".$category->id) }}">{{ $category->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('categories.index', ['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
                         @endforeach
-                        <li><a class="dropdown-item" href="{{ url('/services') }}">View All</a></li>
+                        <li><a class="dropdown-item" href="{{ route('services') }}">View All</a></li>
                         @endif
                     </ul>
                 </li>
@@ -98,8 +98,9 @@
                         <ul class="list-unstyled footer-menu lh-35">
                             @if(!empty(getCategories()))
                             @foreach (getCategories() as $category)
-                            <li><a href="{{ url("/category/".$category->id) }}">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('categories.index', ['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
                             @endforeach
+                            <li><a class="dropdown-item"  href="{{ route('services') }}">View All</a></li>
                             @endif
                         </ul>
                     </div>

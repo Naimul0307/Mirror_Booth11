@@ -38,7 +38,7 @@
                                 <div class="content pt-2">
                                     <p class="card-text">{{ $service->short_desc }}</p>
                                 </div>
-                                <a href="{{ url('/services/detail/'.$service->id) }}" class="btn btn-primary mt-4">Learn More <i class="fa-solid fa-angle-right"></i></a>
+                                <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                 <div class="content pt-2">
                                     <p class="card-text">{{ $service->short_desc }}</p>
                                 </div>
-                                <a href="{{ url('/services/detail/'.$service->id) }}" class="btn btn-primary mt-4">Learn More <i class="fa-solid fa-angle-right"></i></a>
+                                <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>

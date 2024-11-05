@@ -16,11 +16,11 @@
                                     <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
                                 @endif
                                 <div class="card-body p-3">
-                                    <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->id) }}">{{ $service->name }}</a></h1>
+                                    <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->slug) }}">{{ $service->name }}</a></h1>
                                     <div class="content pt-2">
                                         <p class="card-text">{{ $service->short_desc }}</p>
                                     </div>
-                                    <a href="{{ url('/services/detail/'.$service->id) }}" class="btn btn-primary mt-4">Learn More <i class="fa-solid fa-angle-right"></i></a>
+                                    <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="{{ url('/category/1') }}" class="btn btn-primary">SEE MORE PHOTO BOOTHS</a>
+            <a href="{{ url('/category/photo-booths-dubai') }}" class="btn btn-primary">SEE MORE PHOTO BOOTHS</a>
         </div>
     </div>
 </section>
@@ -52,11 +52,11 @@
                                     <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
                                 @endif
                                 <div class="card-body p-3">
-                                    <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->id) }}">{{ $service->name }}</a></h1>
+                                    <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->slug) }}">{{ $service->name }}</a></h1>
                                     <div class="content pt-2">
                                         <p class="card-text">{{ $service->short_desc }}</p>
                                     </div>
-                                    <a href="{{ url('/services/detail/'.$service->id) }}" class="btn btn-primary mt-4">Learn More <i class="fa-solid fa-angle-right"></i></a>
+                                    <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="{{ url('/category/3') }}" class="btn btn-primary">SEE MORE VIDEO BOOTHS</a>
+            <a href="{{ url('/category/video-booths-dubai') }}" class="btn btn-primary">SEE MORE VIDEO BOOTHS</a>
         </div>
     </div>
 </section>
@@ -88,11 +88,11 @@
                                     <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
                                 @endif
                                 <div class="card-body p-3">
-                                    <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->id) }}">{{ $service->name }}</a></h1>
+                                    <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->slug) }}">{{ $service->name }}</a></h1>
                                     <div class="content pt-2">
                                         <p class="card-text">{{ $service->short_desc }}</p>
                                     </div>
-                                    <a href="{{ url('/services/detail/'.$service->id) }}" class="btn btn-primary mt-4">Learn More <i class="fa-solid fa-angle-right"></i></a>
+                                    <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="{{ url('/category/2') }}" class="btn btn-primary">SEE MORE VIDEO BOOTHS</a>
+            <a href="{{ url('/category/games-interactives') }}" class="btn btn-primary">SEE MORE GAMES & INTERACTIVES</a>
         </div>
     </div>
 </section>
