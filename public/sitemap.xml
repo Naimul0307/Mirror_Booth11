@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://127.0.0.1:8000</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/about</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/contact</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/category/photo-booths-dubai</loc>
+        <lastmod>2024-11-05T11:26:42+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/category/games-interactives</loc>
+        <lastmod>2024-11-05T11:32:58+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/category/video-booths-dubai</loc>
+        <lastmod>2024-11-05T11:33:16+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services/detail/sketch-robot</loc>
+        <lastmod>2024-11-05T11:29:49+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services/detail/ai-generative</loc>
+        <lastmod>2024-11-05T11:55:31+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services/detail/ai-background</loc>
+        <lastmod>2024-11-05T11:56:11+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services/detail/mirror-booth</loc>
+        <lastmod>2024-11-05T11:56:54+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services/detail</loc>
+        <lastmod>2024-09-14T02:42:03+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/services/detail/selfie-coffee</loc>
+        <lastmod>2024-11-05T11:56:35+00:00</lastmod>
+
+            </url>
+</urlset>

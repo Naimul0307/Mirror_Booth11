@@ -19,10 +19,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 
 
+
+Route::get('/sitemap', [SitemapController::class, 'generate']);
 
 Route::get('/',[HomeController::class,'index']);
 Route::get('/about-us',[ HomeController::class, 'about' ])->name('about');
