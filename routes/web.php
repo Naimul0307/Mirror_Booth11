@@ -1,23 +1,16 @@
 <?php
 
-use App\Http\Controllers\admin\BlogController as AdminBlogController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
-use App\Http\Controllers\admin\PageController;
-use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\TempImageController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
@@ -32,18 +25,12 @@ Route::get('/about-us',[ HomeController::class, 'about' ])->name('about');
 Route::get('/terms',[ HomeController::class, 'terms' ])->name('terms');
 Route::get('/privacy',[ HomeController::class, 'privacy' ])->name('privacy');
 Route::get('/services',[ ServicesController::class, 'index' ])->name('services');
-Route::get('/services/detail/{slug}',[ ServicesController::class, 'detail'])->name('service.detail');
+Route::get('/service/{slug}',[ ServicesController::class, 'detail'])->name('service.detail');
 Route::get('/category/{slug}', [CategoriesController::class, 'index'])->name('categories.index');
 
-Route::get('/faq',[ FaqController::class, 'index' ]);
-Route::get('/blog',[ BlogController::class, 'index' ])->name('blog.front');
-Route::get('/blog/{id}',[ BlogController::class, 'detail' ])->name('blog-detail');
-Route::post('/save-comment',[ BlogController::class, 'saveComment' ])->name('save.blog');
+
 Route::get('/contact',[ ContactController::class, 'index' ])->name('contact');
 Route::post('/send-email',[ ContactController::class, 'sendEmail' ])->name('sendContactEmail');
-
-Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
-
 
 Route::group(['prefix' => 'account'],function(){
 
@@ -98,52 +85,13 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('/category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
         Route::post('/category/edit/{id}',[CategoryController::class,'update'])->name('category.update');
         Route::post('/category/delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
-
         Route::get('/category/get-slug',[CategoryController::class,'getSlug'])->name('category.slug');
 
-
-        // Blog Routes
-        Route::get('/blog/create',[AdminBlogController::class,'create'])->name('blog.create.form');
-        Route::post('/blog/create',[AdminBlogController::class,'save'])->name('blog.save');
-        Route::get('/blog',[AdminBlogController::class,'index'])->name('blogList');
-        Route::get('/blog/edit/{id}',[AdminBlogController::class,'edit'])->name('blog.edit');
-        Route::post('/blog/edit/{id}',[AdminBlogController::class,'update'])->name('blog.update');
-        Route::post('/blog/delete/{id}',[AdminBlogController::class,'delete'])->name('blog.delete');
-
-        Route::get('/blog/get-slug',[AdminBlogController::class,'getSlug'])->name('blog.slug');
-
-        // Faq Routes
-        Route::get('/faq',[AdminFaqController::class,'index'])->name('faqList');
-        Route::get('/faq/create',[AdminFaqController::class,'create'])->name('faq.create.form');
-        Route::post('/faq/save',[AdminFaqController::class,'save'])->name('faq.save');
-        Route::get('/faq/edit/{id}',[AdminFaqController::class,'edit'])->name('faq.edit');
-        Route::post('/faq/edit/{id}',[AdminFaqController::class,'update'])->name('faq.update');
-        Route::post('/faq/delete/{id}',[AdminFaqController::class,'delete'])->name('faq.delete');
-
-        // Page Routes
-
-        Route::get('/page/create',[PageController::class,'create'])->name('page.create.form');
-        Route::post('/page/create',[PageController::class,'save'])->name('page.save');
-        Route::get('/pages',[PageController::class,'index'])->name('pageList');
-        Route::get('/page/edit/{id}',[PageController::class,'edit'])->name('page.edit');
-        Route::post('/page/edit/{id}',[PageController::class,'update'])->name('page.update');
-        Route::post('/page/delete/{id}',[PageController::class,'delete'])->name('page.delete');
-
-        Route::post('/page/deleteImage',[PageController::class,'deleteImage'])->name('page.deleteImage');
 
         // Setting Routes
         Route::get('/settings',[SettingsController::class,'index'])->name('settings.index');
         Route::post('/settings',[SettingsController::class,'save'])->name('settings.save');
 
-        //Review Routes
-        Route::get('/reviews',[AdminReviewController::class,'index'])->name('reviewList');
-        Route::get('/reviews/create', [AdminReviewController::class, 'create'])->name('reviews.create.from');
-        Route::post('/reviews/create',[AdminReviewController::class,'save'])->name('reviews.create');
-
-        Route::get('/reviews/edit/{id}',[AdminReviewController::class,'edit'])->name('reviews.edit');
-        Route::post('/reviews/edit/{id}',[AdminReviewController::class,'update'])->name('reviews.update');
-        Route::post('/reviews/delete/{id}',[AdminReviewController::class,'delete'])->name('reviews.delete');
-        Route::post('/reviews/{id}/remove-image', [AdminReviewController::class, 'removeMainImage'])->name('reviews.remove.image');
     });
 });
 

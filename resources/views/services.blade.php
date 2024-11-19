@@ -34,11 +34,11 @@
                             <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
                             @endif
                             <div class="card-body p-3">
-                                <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->id) }}">{{ $service->name }}</a></h1>
+                                <h1 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h1>
                                 <div class="content pt-2">
                                     <p class="card-text">{{ $service->short_desc }}</p>
                                 </div>
-                                <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
+                                <a href="{{ route('service.detail', ['slug' => $service->slug]) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -65,11 +65,11 @@
                             <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
                             @endif
                             <div class="card-body p-3">
-                                <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->id) }}">{{ $service->name }}</a></h1>
+                                <h1 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h1>
                                 <div class="content pt-2">
                                     <p class="card-text">{{ $service->short_desc }}</p>
                                 </div>
-                                <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
+                                <a href="{{ route('service.detail', ['slug' => $service->slug]) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>

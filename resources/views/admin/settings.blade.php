@@ -148,13 +148,6 @@
                                                     </div>
                                                     @endforeach
                                                 @endif
-                                                {{-- <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</div>
-                                                <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</div>
-                                                <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</div>
-                                                <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</div>
-                                                <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</div>
-                                                <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</div>
-                                                <div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -243,22 +236,6 @@
             }
         });
     });
-
-    $("#name").change(function(){
-        $("button[type='submit']").prop('disabled',true);
-        $.ajax({
-            url: '{{ route("blog.slug") }}',
-            type: 'get',
-            data: {name: $(this).val()},
-            dataType: 'json',
-            success: function(response){
-                $("button[type='submit']").prop('disabled',false);
-                $("#slug").val(response.slug);
-            }
-        })
-    });
-
-
 </script>
 
 @endsection

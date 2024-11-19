@@ -16,18 +16,4 @@ function getCategories(){
     ->get();
 }
 
-// function getCategories()
-// {
-//     return Category::orderBy('name','ASC')
-//     ->with('services')
-//     ->orderBy('id','DESC')
-//     ->where('status',1)
-//     ->get();
-// }
-
-function getLatestBlog(){
-    $blogs = Blog::where('status',1)->orderBy('created_at','DESC')->take(6)->get();
-    return $blogs;
-}
-
 ?>

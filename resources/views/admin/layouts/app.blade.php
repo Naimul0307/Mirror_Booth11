@@ -60,30 +60,7 @@
                                     <p>Manage Services</p>
                                 </a>
                             </li>
-							<li class="nav-item">
-                                <a href="{{ route('blogList') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Manage Blogs</p>
-                                </a>
-                            </li>
-							<li class="nav-item">
-                                <a href="{{ route('faqList') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Manage Faq</p>
-                                </a>
-                            </li>
-							<li class="nav-item">
-                                <a href="{{ route('pageList') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Manage Pages</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('reviewList') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Reviews</p>
-                                </a>
-                            </li>
+
 							<li class="nav-item">
                                 <a href="{{ route('settings.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>

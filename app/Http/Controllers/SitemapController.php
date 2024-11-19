@@ -33,7 +33,7 @@ class SitemapController extends Controller
         $services = Service::all(); // Ensure this fetches a collection of Product models
         foreach ($services as $service) {
             $sitemap->add(
-                Url::create("/services/detail/{$service->slug}")
+                Url::create("/service/{$service->slug}")
                     ->setLastModificationDate($service->updated_at)
             );
         }

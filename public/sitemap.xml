@@ -18,47 +18,222 @@
             </url>
     <url>
         <loc>http://127.0.0.1:8000/category/photo-booths-dubai</loc>
-        <lastmod>2024-11-05T11:26:42+00:00</lastmod>
+        <lastmod>2024-11-05T07:26:42+00:00</lastmod>
 
             </url>
     <url>
         <loc>http://127.0.0.1:8000/category/games-interactives</loc>
-        <lastmod>2024-11-05T11:32:58+00:00</lastmod>
+        <lastmod>2024-11-05T07:32:58+00:00</lastmod>
 
             </url>
     <url>
         <loc>http://127.0.0.1:8000/category/video-booths-dubai</loc>
-        <lastmod>2024-11-05T11:33:16+00:00</lastmod>
+        <lastmod>2024-11-05T07:33:16+00:00</lastmod>
 
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/services/detail/sketch-robot</loc>
-        <lastmod>2024-11-05T11:29:49+00:00</lastmod>
+        <loc>http://127.0.0.1:8000/service/sketch-robot</loc>
+        <lastmod>2024-11-05T03:29:49+00:00</lastmod>
 
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/services/detail/ai-generative</loc>
-        <lastmod>2024-11-05T11:55:31+00:00</lastmod>
+        <loc>http://127.0.0.1:8000/service/ai-generative</loc>
+        <lastmod>2024-11-05T03:55:31+00:00</lastmod>
 
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/services/detail/ai-background</loc>
-        <lastmod>2024-11-05T11:56:11+00:00</lastmod>
+        <loc>http://127.0.0.1:8000/service/ai-background</loc>
+        <lastmod>2024-11-05T03:56:11+00:00</lastmod>
 
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/services/detail/mirror-booth</loc>
-        <lastmod>2024-11-05T11:56:54+00:00</lastmod>
+        <loc>http://127.0.0.1:8000/service/mirror-booth</loc>
+        <lastmod>2024-11-05T03:56:54+00:00</lastmod>
 
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/services/detail</loc>
-        <lastmod>2024-09-14T02:42:03+00:00</lastmod>
+        <loc>http://127.0.0.1:8000/service/classic-photo-booth</loc>
+        <lastmod>2024-11-05T05:05:31+00:00</lastmod>
 
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/services/detail/selfie-coffee</loc>
-        <lastmod>2024-11-05T11:56:35+00:00</lastmod>
+        <loc>http://127.0.0.1:8000/service/green-screen-photo-booth</loc>
+        <lastmod>2024-11-05T05:06:00+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/selfie-coffee</loc>
+        <lastmod>2024-11-05T03:56:35+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/physical-mosaic-wall</loc>
+        <lastmod>2024-11-05T05:06:14+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/digital-mosaic</loc>
+        <lastmod>2024-11-06T00:05:46+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/phoyo-flip</loc>
+        <lastmod>2024-10-29T07:53:45+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/glam-bot</loc>
+        <lastmod>2024-11-06T08:31:30+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/caption-cam</loc>
+        <lastmod>2024-10-29T08:58:20+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/spin-360-video-booth</loc>
+        <lastmod>2024-10-29T07:54:40+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/360-loop-video-booth</loc>
+        <lastmod>2024-11-06T08:31:48+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/vouge-booth</loc>
+        <lastmod>2024-09-13T19:30:41+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/testimonial-booth</loc>
+        <lastmod>2024-09-13T20:14:24+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/instant-tattoo</loc>
+        <lastmod>2024-09-13T20:18:00+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/power-bikes</loc>
+        <lastmod>2024-10-29T07:58:32+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/speed-catch</loc>
+        <lastmod>2024-10-29T07:59:06+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/claw-machine</loc>
+        <lastmod>2024-10-29T08:09:44+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/memory-game</loc>
+        <lastmod>2024-10-29T08:08:13+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/pledge-wall</loc>
+        <lastmod>2024-10-29T08:08:59+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/sling-shot</loc>
+        <lastmod>2024-10-29T08:09:21+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/flag-game</loc>
+        <lastmod>2024-10-29T08:10:02+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/photo-puzzle</loc>
+        <lastmod>2024-10-29T08:10:20+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/magazine-booth</loc>
+        <lastmod>2024-11-04T14:58:09+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/smart-vending</loc>
+        <lastmod>2024-10-29T07:56:27+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/live-printing</loc>
+        <lastmod>2024-10-29T07:56:57+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/motion-games</loc>
+        <lastmod>2024-10-29T07:57:35+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/light-painting</loc>
+        <lastmod>2024-10-29T08:10:55+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/click-and-print</loc>
+        <lastmod>2024-10-29T08:11:51+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/magnet-photo-booth</loc>
+        <lastmod>2024-10-29T08:14:02+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/ai-sketch-booth</loc>
+        <lastmod>2024-10-29T08:14:21+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/text-selfie</loc>
+        <lastmod>2024-10-29T08:14:34+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/graffiti-touch</loc>
+        <lastmod>2024-10-29T08:15:16+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/flip-book</loc>
+        <lastmod>2024-11-04T14:59:12+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/virtual-&amp;-hybrid-mosaic</loc>
+        <lastmod>2024-10-29T08:15:48+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/scream-game</loc>
+        <lastmod>2024-10-29T08:28:38+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/catch-the-letter</loc>
+        <lastmod>2024-10-29T08:27:03+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/ai-ring-romer-photo-booth</loc>
+        <lastmod>2024-10-29T09:18:39+00:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/service/guess-the-icon-game</loc>
+        <lastmod>2024-10-29T09:26:15+00:00</lastmod>
 
             </url>
 </urlset>
