@@ -47,14 +47,3 @@
 @include('common.company')
 
 @endsection
-
-<script>
-    $(document).ready(function() {
-        $('.btn-container a').click(function(e) {
-            e.preventDefault(); // Prevent the default anchor click behavior
-            var url = $(this).attr('href'); // Get the URL from the link
-            // Optionally, perform any actions before redirecting
-            window.location.href = url; // Redirect to the contact page
-        });
-    });
-</script>
