@@ -29,7 +29,7 @@ class ContactController extends Controller
             $emailData['email'] = $request->email;
             $emailData['message'] = $request->message;
 
-            Mail::to('mdnaimul15901@gmail.com')->send(new ContactMail($emailData));
+            Mail::to('support@dubai-photobooth.com')->send(new ContactMail($emailData));
 
             $request->session()->flash('success','Thanks for contacting us, we will contact you shortly.');
 

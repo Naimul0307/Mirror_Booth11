@@ -141,7 +141,9 @@
                             <ul class="list-inline footer-socials mt-4">
                                 @if(!empty(getSettings()) && getSettings()->facebook_url != '')
                                 <li class="list-inline-item">
-                                    <a target="_blank" href="{{ getSettings()->facebook_url }}"><i class="fa-brands fa-facebook-f"></i> </a>
+                                    <a target="_blank" href="{{ getSettings()->facebook_url }}">
+                                        <i class="fa-brands fa-facebook-f" style="color:#2d97e9"></i>
+                                    </a>
                                 </li>
                                 @endif
 
@@ -153,7 +155,9 @@
 
                                 @if(!empty(getSettings()) && getSettings()->instagram_url != '')
                                 <li class="list-inline-item">
-                                    <a target="_blank" href="{{ getSettings()->instagram_url }}"><i class="fa-brands fa-instagram"></i></a>
+                                    <a target="_blank" href="{{ getSettings()->instagram_url }}">
+                                        <i class="fa-brands fa-instagram" style="color: #e53895;"></i>
+                                    </a>
                                 </li>
                                 @endif
 
@@ -171,13 +175,17 @@
 
                                 @if(!empty(getSettings()) && getSettings()->linkedin_url!= '')
                                 <li class="list-inline-item">
-                                    <a target="_blank" href="{{ getSettings()->linkedin_url }}"><i class="fa-brands fa-linkedin"></i></a>
+                                    <a target="_blank" href="{{ getSettings()->linkedin_url }}">
+                                        <i class="fa-brands fa-linkedin" style="color: #005fa8;"></i>
+                                    </a>
                                 </li>
                                 @endif
 
                                 @if(!empty(getSettings()) && getSettings()->youtube_url != '')
                                 <li class="list-inline-item">
-                                    <a target="_blank" href="{{ getSettings()->youtube_url }}"><i class="fa-brands fa-youtube"></i></a>
+                                    <a target="_blank" href="{{ getSettings()->youtube_url }}">
+                                        <i class="fa-brands fa-youtube" style="color: #ea0b0b;"></i>
+                                    </a>
                                 </li>
                                 @endif
                             </ul>
@@ -191,7 +199,7 @@
                     <div class="col-lg-6">
                         <div class="copyright">
                             @if (!empty(getSettings()) && getSettings()->copy != '')
-                            {{ getSettings()->copy }}</a>
+                            <a href="www.linkedin.com/in/naimulalambd"  class="custom-link">{{ getSettings()->copy }}</a>
                             @endif
                         </div>
                     </div>
@@ -228,16 +236,19 @@ const closeMenu = document.getElementById('close-menu');
 const menu = document.getElementById('menu');
 
 menuToggle.addEventListener('click', () => {
+    console.log("Menu toggle clicked"); // Debugging
     menu.classList.add('show-menu');
     menuToggle.style.display = 'none';
     closeMenu.style.display = 'block';
 });
 
 closeMenu.addEventListener('click', () => {
+    console.log("Close menu clicked"); // Debugging
     menu.classList.remove('show-menu');
     menuToggle.style.display = 'block';
     closeMenu.style.display = 'none';
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const desktopNav = document.querySelector('.desktop-nav .nav-bar');

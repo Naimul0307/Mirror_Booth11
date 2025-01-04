@@ -454,6 +454,15 @@ a {
     margin-right: 10px;
 }
 
+.custom-link {
+    color: #6F8BA4;
+    font-weight: bold;
+}
+
+.custom-link:hover {
+    color: darkblue;
+}
+
 /* Keyframes for blinking effect */
 @keyframes blink-animation {
     0% {

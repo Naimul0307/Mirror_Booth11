@@ -93,7 +93,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <iframe class="w-100 h-400px grayscale rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57739.31542034597!2d55.329430203630615!3d25.24678463557677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5b87fb362717%3A0xb19ed1733a5679d9!2sMirror%20Booth%20Dubai!5e0!3m2!1sen!2sae!4v1725969859667!5m2!1sen!2sae" height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>
+                <iframe class="w-100 h-400px grayscale rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57739.31542034597!2d55.329430203630615!3d25.24678463557677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5b87fb362717%3A0xb19ed1733a5679d9!2sMirror%20Booth%20Dubai!5e0!3m2!1sen!2sae!4v1725969859667!5m2!1sen!2sae" height="500" style="border:0;" aria-hidden="true" tabindex="0"></iframe>
             </div>
         </div>
     </div>
