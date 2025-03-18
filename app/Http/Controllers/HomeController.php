@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Page;
-use Illuminate\Http\Request;
 use App\Models\Service;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,12 +20,17 @@ class HomeController extends Controller
             1 => $groupedServices->get(1, collect())->take(4), // Photo Booths
             2 => $groupedServices->get(2, collect())->take(4), // Games & Interactives
             3 => $groupedServices->get(3, collect())->take(4),  // Video Booths
-            4 => $groupedServices->get(4, collect())->take(4)  // Video Booths
+            4 => $groupedServices->get(4, collect())->take(4)  // Souvenir Booths
         ];
 
-        $data['limitedServices'] = $limitedServices; // Pass to the view
+        // Fetch all categories from the database
+        $categories = Category::all();
+
+        $data['limitedServices'] = $limitedServices;
+        $data['categories'] = $categories; // Pass categories to the view
         return view('home', $data); // Adjust this to your view file
     }
+
     public function about() {
         $page = Page::where('id',12)->first();
         return view('static-page',['page' => $page]);
