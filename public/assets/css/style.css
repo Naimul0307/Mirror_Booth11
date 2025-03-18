@@ -8,18 +8,10 @@ body, html {
     font-family: 'Roboto', sans-serif;
     color: #6F8BA4;
     background-color: #222;
-    overflow: -moz-scrollbars-none; /* For Firefox */
+    overflow: auto; /* For Firefox */
     -ms-overflow-style: none;  /* For Internet Explorer and Edge */
     scrollbar-width: none;
 }
-
-html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none;  /* For Chrome, Safari, and Opera */
-}
-a {
-    text-decoration: none;
-}
-
 
 .divider-container {
     display: flex;

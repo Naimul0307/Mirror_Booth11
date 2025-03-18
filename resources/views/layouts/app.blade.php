@@ -142,7 +142,7 @@
                                 @if(!empty(getSettings()) && getSettings()->facebook_url != '')
                                 <li class="list-inline-item">
                                     <a target="_blank" href="{{ getSettings()->facebook_url }}">
-                                        <i class="fa-brands fa-facebook-f" style="color:#2d97e9"></i>
+                                        <i class="fa-brands fa-facebook-f"></i>
                                     </a>
                                 </li>
                                 @endif
@@ -156,7 +156,7 @@
                                 @if(!empty(getSettings()) && getSettings()->instagram_url != '')
                                 <li class="list-inline-item">
                                     <a target="_blank" href="{{ getSettings()->instagram_url }}">
-                                        <i class="fa-brands fa-instagram" style="color: #e53895;"></i>
+                                        <i class="fa-brands fa-instagram"></i>
                                     </a>
                                 </li>
                                 @endif
@@ -176,7 +176,7 @@
                                 @if(!empty(getSettings()) && getSettings()->linkedin_url!= '')
                                 <li class="list-inline-item">
                                     <a target="_blank" href="{{ getSettings()->linkedin_url }}">
-                                        <i class="fa-brands fa-linkedin" style="color: #005fa8;"></i>
+                                        <i class="fa-brands fa-linkedin"></i>
                                     </a>
                                 </li>
                                 @endif
@@ -184,7 +184,7 @@
                                 @if(!empty(getSettings()) && getSettings()->youtube_url != '')
                                 <li class="list-inline-item">
                                     <a target="_blank" href="{{ getSettings()->youtube_url }}">
-                                        <i class="fa-brands fa-youtube" style="color: #ea0b0b;"></i>
+                                        <i class="fa-brands fa-youtube"></i>
                                     </a>
                                 </li>
                                 @endif

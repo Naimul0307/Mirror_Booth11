@@ -13,7 +13,7 @@
                 <div class="divider mb-3"></div>
             </div>
             @if(!empty($category))
-            <div class="mt-2 mb-3 text-muted">{{ $category->name }} Rental Dubai</div>
+            <div class="mt-2 mb-3 text-muted">{{ $category->name }} RENTAL DUBAI</div>
             @endif
             <div class="mt-2 mb-3 text-muted">Award Winning Interactive Photo Booth Services In Dubai</div>
             <p>A professional and well-experienced photobooth supplier in the UAE. We deliver client satisfaction and event perfection in all of our services.
@@ -23,57 +23,12 @@
 </section>
 
 @if($services->isNotEmpty())
-    <?php
-        // Check if category ID is 3
-        if ($categorySelected == 3) {
-            // Show the first 4 services if category ID is 3
-            $firstHalf = $services->take(4);
-            $secondHalf = $services->slice(4); // Get the rest of the services
-        } else {
-            // Divide the services collection into two halves for other categories
-            $chunks = $services->chunk(ceil($services->count() / 2));
-            $firstHalf = $chunks->get(0); // First half
-            $secondHalf = $chunks->get(1); // Second half
-        }
-    ?>
-
     <section class="section-3 py-5">
         <div class="container">
             <div class="cards">
                 <div class="row">
                     {{-- Display the first half of services --}}
-                    @foreach ($firstHalf as $service)
-                    <div class="col-md-3 col-sm-6 mb-4">
-                        <div class="card border-0 text-center">
-                            @if(!empty($service->image))
-                            <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" class="card-img-top" alt="">
-                            @else
-                            <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
-                            @endif
-                            <div class="card-body p-3">
-                                <h1 class="card-title mt-2"><a href="{{ url('/services/detail/'.$service->slug) }}">{{ $service->name }}</a></h1>
-                                <div class="content pt-2">
-                                    <p class="card-text">{{ $service->short_desc }}</p>
-                                </div>
-                                <a href="{{ url('/services/detail/'.$service->slug) }}" class="btn btn-primary mt-4">See In Action <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Include review section between the two halves --}}
-    @include('common.review')
-
-    <section class="section-3 py-5">
-        <div class="container">
-            <div class="cards">
-                <div class="row">
-                    {{-- Display the second half of services --}}
-                    @foreach ($secondHalf as $service)
+                    @foreach ($services as $service)
                     <div class="col-md-3 col-sm-6 mb-4">
                         <div class="card border-0 text-center">
                             @if(!empty($service->image))
@@ -98,5 +53,7 @@
 @endif
 
 @include('common.company')
+
+@include('common.review')
 
 @endsection

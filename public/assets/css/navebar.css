@@ -79,10 +79,8 @@
     transform: translateY(0); /* Ensure it's in the view */
 }
 
-
-
 .desktop-nav .logo img {
-    width: 80px;
+    width: 300px;
     margin-left: 50px;
 }
 
@@ -128,7 +126,6 @@
     display: block;
 }
 
-/* Mobile Navbar */
 .mobile-nav {
     display: none;
 }
@@ -148,7 +145,7 @@
 }
 
 .mobile-nav .logo img {
-    width: 40px; /* Adjust logo size for mobile view */
+    width: 150px; /* Adjust logo size for mobile view */
 }
 
 .menu-toggle, .close-menu {
@@ -192,20 +189,19 @@
     height: 100vh;
     background-color: black;
     overflow-y: auto;
-    transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 30;
     align-items: center;
 }
 
+
 .mobile-nav .menu.show-menu {
     display: flex;
-    transform: translateX(0);
 }
 
 .mobile-nav .menu li {
-    margin-top: 10px;
-    padding: 20px;
+    margin-top: 55px;
+    padding: 10px;
     width: 100%; /* Ensure each menu item takes the full width */
     text-align: center; /* Center the text */
 }

@@ -18,7 +18,8 @@ class HomeController extends Controller
         $limitedServices = [
             1 => $groupedServices->get(1, collect())->take(4), // Photo Booths
             2 => $groupedServices->get(2, collect())->take(4), // Games & Interactives
-            3 => $groupedServices->get(3, collect())->take(4)  // Video Booths
+            3 => $groupedServices->get(3, collect())->take(4),  // Video Booths
+            4 => $groupedServices->get(4, collect())->take(4)  // Video Booths
         ];
 
         $data['limitedServices'] = $limitedServices; // Pass to the view
