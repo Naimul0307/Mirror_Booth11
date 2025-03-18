@@ -15,18 +15,10 @@ class HomeController extends Controller
         // Group services by category
         $groupedServices = $services->groupBy('category_id');
 
-        // Limit to 8 services for each category
-        $limitedServices = [
-            1 => $groupedServices->get(1, collect())->take(4), // Photo Booths
-            2 => $groupedServices->get(2, collect())->take(4), // Games & Interactives
-            3 => $groupedServices->get(3, collect())->take(4),  // Video Booths
-            4 => $groupedServices->get(4, collect())->take(4)  // Souvenir Booths
-        ];
-
         // Fetch all categories from the database
         $categories = Category::all();
 
-        $data['limitedServices'] = $limitedServices;
+        $data['groupedServices'] = $groupedServices; // Pass grouped services to the view
         $data['categories'] = $categories; // Pass categories to the view
         return view('home', $data); // Adjust this to your view file
     }
