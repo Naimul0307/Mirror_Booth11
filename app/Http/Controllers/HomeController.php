@@ -20,21 +20,9 @@ class HomeController extends Controller
 
         $data['groupedServices'] = $groupedServices; // Pass grouped services to the view
         $data['categories'] = $categories; // Pass categories to the view
+        $data['meta_title'] = 'HOME | MIRROR BOOTH DUABI';
+        $data['meta_description'] = 'Welcome to Mirror Booth Dubai';
+        $data['meta_keywords'] = 'mirror booth, photo booth, dubai, events';
         return view('home', $data); // Adjust this to your view file
-    }
-
-    public function about() {
-        $page = Page::where('id',12)->first();
-        return view('static-page',['page' => $page]);
-    }
-
-    public function privacy() {
-        $page = Page::where('id',16)->first();
-        return view('static-page',['page' => $page]);
-    }
-
-    public function terms() {
-        $page = Page::where('id',14)->first();
-        return view('static-page',['page' => $page]);
     }
 }

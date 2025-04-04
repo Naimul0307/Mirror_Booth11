@@ -91,6 +91,22 @@
                                     <textarea name="short_description" id="short_description" cols="30" rows="7" class="form-control"></textarea>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="meta_title">Meta Title</label>
+                                    <input type="text" name="meta_title" id="meta_title" class="form-control">
+                                    <p class="error meta_title-error"></p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="meta_description">Meta Description</label>
+                                    <textarea name="meta_description" id="meta_description" class="summernote"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="meta_keywords">Meta Keywords</label>
+                                    <input type="text" name="meta_keywords" id="meta_keywords" class="form-control">
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input type="hidden" name="image_id" id="image_id" value="">
@@ -111,6 +127,7 @@
                                             <input type="hidden" name="gallery_images" id="gallery_images" value="">
                                     </div>
                                 </div>
+
 
                                 <div class="form-group mt-4">
                                     <label for="status">Status</label>

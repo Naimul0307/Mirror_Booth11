@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="{{ url('/category/' . $category->slug) }}" class="btn btn-primary">SEE MORE {{ strtoupper($category->name) }}</a>
+             <a href="{{ route('categories.index', ['slug' => $category->slug]) }}" class="btn btn-primary">SEE MORE {{ strtoupper($category->name) }}</a>
             </div>
         </div>
     </section>

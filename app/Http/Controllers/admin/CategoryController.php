@@ -35,12 +35,16 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories',
             'slug' => 'required|unique:categories',
+            'meta_title' => 'required|unique:categories',
         ]);
 
         if($validator->passes()) {
             $category = new Category;
             $category->name = $request->name;
             $category->slug = $request->slug;
+            $category->meta_title = $request->meta_title;
+            $category->meta_description = $request->meta_description;
+            $category->meta_keywords = $request->meta_keywords;
             $category->status = $request->status;
 
             $category->save();
@@ -81,6 +85,7 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories,name,'.$category->id.',id',
             'slug' => 'required|unique:categories,slug,'.$category->id.',id',
+            'meta_title' => 'required|unique:categories,meta_title,'.$category->id.',id',
         ]);
 
         if($validator->passes()) {
@@ -95,6 +100,9 @@ class CategoryController extends Controller
 
             $category->name = $request->name;
             $category->slug = $request->slug;
+            $category->meta_title = $request->meta_title;
+            $category->meta_description = $request->meta_description;
+            $category->meta_keywords = $request->meta_keywords;
             $category->status = $request->status;
             $category->save();
 

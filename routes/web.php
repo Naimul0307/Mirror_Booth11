@@ -21,15 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/sitemap', [SitemapController::class, 'generate']);
 
 Route::get('/',[HomeController::class,'index']);
-Route::get('/about-us',[ HomeController::class, 'about' ])->name('about');
-Route::get('/terms',[ HomeController::class, 'terms' ])->name('terms');
-Route::get('/privacy',[ HomeController::class, 'privacy' ])->name('privacy');
 Route::get('/services',[ ServicesController::class, 'index' ])->name('services');
 Route::get('/service/{slug}',[ ServicesController::class, 'detail'])->name('service.detail');
 Route::get('/category/{slug}', [CategoriesController::class, 'index'])->name('categories.index');
-
-
 Route::get('/contact',[ ContactController::class, 'index' ])->name('contact');
+
 Route::post('/send-email',[ ContactController::class, 'sendEmail' ])->name('sendContactEmail');
 
 Route::group(['prefix' => 'account'],function(){

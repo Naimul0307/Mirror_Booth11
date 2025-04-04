@@ -46,6 +46,22 @@
                                     <p class="error slug-error"></p>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="meta_title">Meta Title</label>
+                                    <input type="text" name="meta_title" id="meta_title" class="form-control">
+                                    <p class="error meta_title-error"></p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="meta_description">Meta Description</label>
+                                    <textarea name="meta_description" id="meta_description" class="summernote"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="meta_keywords">Meta Keywords</label>
+                                    <input type="text" name="meta_keywords" id="meta_keywords" class="form-control">
+                                </div>
+
                                 <div class="form-group mt-4">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">

@@ -11,7 +11,12 @@ class ContactController extends Controller
 {
     public function index() {
         $settings = getSettings();
-        return view('contact',['settings' => $settings]);
+        return view('contact', [
+            'settings' => $settings,
+            'meta_title' => 'CONTACT US | MIRROR BOOTH DUABI',
+            'meta_description' => 'Get in touch with Mirror Booth Dubai for bookings or inquiries.',
+            'meta_keywords' => 'contact, mirror booth, dubai, booking'
+        ]);
 
     }
 
@@ -45,5 +50,4 @@ class ContactController extends Controller
         }
 
    }
-
 }

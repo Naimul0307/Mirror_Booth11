@@ -50,13 +50,24 @@
                             </div>
                             <div class="card-tools">
                                 <form action="" method="get">
-                                    <div class="input-group mb-0 mt-0" style="width: 250px;">
-                                        <input value="{{ (!empty(Request::get('keyword'))) ? Request::get('keyword') : '' }}" type="text" name="keyword" class="form-control float-right" placeholder="Search">
+                                    <div class="input-group mb-0 mt-0" style="width: 700px;">
+                                        <input value="{{ request()->get('keyword') }}" type="text" name="keyword" class="form-control" placeholder="Search">
+
+                                        <select name="category" class="form-control">
+                                            <option value="">All Categories</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" {{ request()->get('category') == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
                                             </button>
                                         </div>
+                                        <a href="{{ route('serviceList') }}" class="btn btn-secondary ml-2">Reset</a>
                                     </div>
                                 </form>
                             </div>
@@ -68,6 +79,8 @@
                                     <th width="50">Name</th>
                                     <th width="50">Slug</th>
                                     <th width="50">Category Name</th>
+                                    <th width="50">Meta Title</th>
+                                    <th width="50">Meta Keywords</th>
                                     <th width="80">Image</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
@@ -80,11 +93,13 @@
                                     <td>{{ $service->name }}</td>
                                     <td>{{ $service->slug }}</td>
                                     <td>{{ $service->categoryName }}</td>
+                                    <td>{{ $service->meta_title}}</td>
+                                    <td>{{ $service->meta_keywords}}</td>
                                     <td>
                                         @if(!empty($service->image))
-                                        <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" width="50">
+                                        <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" alt="image" width="50">
                                         @else
-                                        <img src="{{ asset('uploads/placeholder.jpg') }}" alt="" width="50">
+                                        <img src="{{ asset('uploads/placeholder.jpg') }}" alt="image" width="50">
                                         @endif
                                     </td>
                                     <td>{{ date('d/m/Y',strtotime($service->created_at)) }}</td>
@@ -126,7 +141,7 @@
             <!-- /.row -->
             <div class="row">
                 @if(!empty($services))
-                {{ $services->links('pagination::bootstrap-4') }}
+                {{ $services->appends(request()->query())->links('pagination::bootstrap-4') }}
                 @endif
             </div>
 

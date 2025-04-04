@@ -19,6 +19,9 @@ class CreateServicesTable extends Migration
             $table->string('slug');
             $table->string('short_desc')->nullable();
             $table->text('description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
             $table->integer('status')->default('1');
             $table->string('image')->default('NULL');
             $table->json('additional_videos_links')->nullable(); // For multiple additional video links

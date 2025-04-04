@@ -382,6 +382,7 @@ body, html {
 
 /* Slider container */
 .services-slider {
+    position: relative;
     display: flex; /* Use flexbox to display items in a row */
     overflow-x: auto; /* Enable horizontal scrolling */
     scroll-behavior: smooth; /* Smooth scrolling */
@@ -414,6 +415,42 @@ body, html {
 .slider-item:hover {
     transform: scale(1.05); /* Slight zoom on hover */
     z-index: 1; /* Bring the hovered image to the front */
+}
+/* Position the arrows in the middle */
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    z-index: 10; /* Ensure they appear above the slider */
+    transition: background-color 0.3s ease;
+}
+
+/* Left arrow styling */
+.slick-prev {
+    left:-17px;;
+}
+
+/* Right arrow styling */
+.slick-next {
+    right: 0px;
+}
+
+/* Optional: If you want to have different colors or additional hover effects */
+.slick-prev i,
+.slick-next i {
+    font-size: 30px; /* Icon size */
+    color: rgb(255, 255, 255); /* Default icon color */
+    transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Change icon color when hovered */
+.slick-prev:hover i,
+.slick-next:hover i {
+    color: rgb(245, 56, 113); /* Red color on hover (you can change it to any color) */
 }
 
 /* WhatsApp Button CSS */
@@ -554,6 +591,12 @@ body, html {
         width: 600px; /* Adjust size for tablets */
         height: 200px; /* Adjust height for tablets */
     }
+
+    .slick-prev,
+    .slick-next {
+        font-size: 18px;
+        padding: 8px;
+    }
 }
 
 /* For screens smaller than 480px */
@@ -617,6 +660,12 @@ body, html {
     .slider-item {
         width: 300px; /* Adjust size for mobile */
         height: 100px; /* Adjust height for mobile */
+    }
+
+    .slick-prev,
+    .slick-next {
+        font-size: 18px;
+        padding: 8px;
     }
 }
 

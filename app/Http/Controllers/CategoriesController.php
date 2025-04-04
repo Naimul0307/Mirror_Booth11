@@ -29,6 +29,10 @@ class CategoriesController extends Controller
         $data['services'] = $services;
         $data['categorySelected'] = $category->id;
 
+        $data['meta_title'] = ($category->meta_title ?? $category->title) . ' | MIRROR BOOTH DUABI';
+        $data['meta_description'] = $category->meta_description ?? Str::limit(strip_tags($category->description), 150);
+        $data['meta_keywords'] = $category->meta_keywords ?? 'mirror booth, services';
+
         return view('category', $data);
     }
 }

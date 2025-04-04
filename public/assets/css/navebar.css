@@ -80,7 +80,7 @@
 }
 
 .desktop-nav .logo img {
-    width: 300px;
+    width: 200px;
     margin-left: 50px;
 }
 
@@ -114,7 +114,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgba(71, 70, 70, 0.767);
+    background-color: rgba(241, 106, 181, 0.767);
     z-index: 50;
 }
 
@@ -125,6 +125,7 @@
 .desktop-nav .menu li:hover .dropdown-menu {
     display: block;
 }
+
 
 .mobile-nav {
     display: none;
@@ -216,7 +217,7 @@
     display: none;
     position: relative;
     left: 0;
-    background-color: rgba(71, 70, 70, 0.767);
+    background-color: rgba(241, 106, 181, 0.767);
     z-index: 50;
 }
 

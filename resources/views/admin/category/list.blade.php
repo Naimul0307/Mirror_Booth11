@@ -65,6 +65,8 @@
                                     <th width="50">Id</th>
                                     <th width="50">Name</th>
                                     <th width="50">Slug</th>
+                                    <th width="50">Meta Title</th>
+                                    <th width="50">Meta Keywords</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
                                     <th width="100">Action</th>
@@ -75,6 +77,8 @@
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
+                                    <td>{{ $category->meta_title}}</td>
+                                    <td>{{ $category->meta_keywords}}</td>
                                     <td>{{ date('d/m/Y',strtotime($category->created_at)) }}</td>
                                     <td>
                                         @if($category->status == 1)

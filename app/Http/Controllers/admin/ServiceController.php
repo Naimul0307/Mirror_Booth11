@@ -18,19 +18,27 @@ use Intervention\Image\ImageManager;
 class ServiceController extends Controller
 {
     public function index(Request $request) {
-        $services = Service::orderBy('created_at','ASC')->select('services.*','categories.name as categoryName')
-        ->latest('services.id')
-        ->leftJoin('categories','categories.id','services.category_id');
+        $query = Service::orderBy('created_at','ASC')
+            ->select('services.*','categories.name as categoryName')
+            ->leftJoin('categories','categories.id','services.category_id');
+
         if (!empty($request->keyword)) {
-            $services = $services->where('services.name','like','%'.$request->keyword.'%');
-            $services = $services->orWhere('categories.name','like','%'.$request->get('keyword').'%');
+            $query->where(function($q) use ($request) {
+                $q->where('services.name','like','%'.$request->keyword.'%')
+                  ->orWhere('categories.name','like','%'.$request->keyword.'%');
+            });
         }
 
-        $services = $services->paginate(20);
+        if (!empty($request->category)) {
+            $query->where('services.category_id', $request->category);
+        }
+
+        $services = $query->latest('services.id')->paginate(20);
 
         $data['services'] = $services;
+        $data['categories'] = Category::orderBy('name', 'ASC')->get(); // Send categories to the view
 
-        return view('admin.services.list',$data);
+        return view('admin.services.list', $data);
     }
 
     public function create() {
@@ -43,6 +51,7 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:services',
             'slug' => 'required|unique:services',
+            'meta_title' => 'required|unique:services',
             'category' => 'required',
         ]);
 
@@ -55,75 +64,79 @@ class ServiceController extends Controller
             $service->category_id = $request->category;
             $service->description = $request->description;
             $service->short_desc = $request->short_description;
+            $service->meta_title = $request->meta_title;
+            $service->meta_description = $request->meta_description;
+            $service->meta_keywords = $request->meta_keywords;
             $service->videos_link = $request->videos_link;
             $service->additional_videos_links = $request->input('additional_videos_links'); // Array of additional video links\
             $service->status = $request->status;
             $service->save();
 
             if ($request->image_id > 0) {
-                $tempImage = TempFile::where('id',$request->image_id)->first();
+                $tempImage = TempFile::where('id', $request->image_id)->first();
                 $tempFileName = $tempImage->name;
-                $imageArray = explode('.',$tempFileName);
+                $imageArray = explode('.', $tempFileName);
                 $ext = end($imageArray);
 
-                $newFileName = 'service-'.$service->id.'.'.$ext;
+                // Replace ID with Slug in the new file name
+                $newFileName = $tempFileName . '-' . $service->slug . '.' . $ext;
 
-                $sourcePath = './uploads/temp/'.$tempFileName;
+                $sourcePath = './uploads/temp/' . $tempFileName;
 
                 // Generate Small Thumbnail
-                $dPath = './uploads/services/thumb/small/'.$newFileName;
+                $dPath = './uploads/services/thumb/small/' . $newFileName;
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($sourcePath);
-                $img->cover(360,220);
+                $img->cover(360, 220);
                 $img->save($dPath);
 
                 // Generate Large Thumbnail
-                $dPath = './uploads/services/thumb/large/'.$newFileName;
+                $dPath = './uploads/services/thumb/large/' . $newFileName;
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($sourcePath);
                 $img->scaleDown(1150);
-                // $img->resize(1150, null, function ($constraint) {
-                //     $constraint->aspectRatio();
-                // });
                 $img->save($dPath);
 
+                // Save new file name in the database
                 $service->image = $newFileName;
                 $service->save();
 
+                // Delete temp file
                 File::delete($sourcePath);
-
             }
 
             // Gallery images handling
             if ($request->has('gallery_images') && $request->image_id > 0) {
-
                 $galleryImageIds = explode(',', $request->gallery_images);
                 $galleryImagePaths = [];
 
                 foreach ($galleryImageIds as $imageId) {
                     $tempImage = TempFile::where('id', $imageId)->first();
-                    $tempFileName = $tempImage->name;
-                    $imageArray = explode('.', $tempFileName);
-                    $ext = end($imageArray);
+                    if ($tempImage) {
+                        $tempFileName = $tempImage->name;
+                        $imageArray = explode('.', $tempFileName);
+                        $ext = end($imageArray);
 
-                    $newFileName = 'service-gallery-'.$service->id.'-'.uniqid().'.'.$ext;
+                        // Use slug instead of ID for gallery image name
+                        $newFileName = $tempFileName . '-' . $service->slug . '.' . $ext;
 
-                    $sourcePath = './uploads/temp/'.$tempFileName;
+                        $sourcePath = './uploads/temp/' . $tempFileName;
 
-                    // Save original size
-                    $dPath = './uploads/services/gallery/'.$newFileName;
-                    $manager = new ImageManager(new Driver());
-                    $img = $manager->read($sourcePath);
-                    $img->save($dPath);
+                        // Save original size
+                        $dPath = './uploads/services/gallery/' . $newFileName;
+                        $manager = new ImageManager(new Driver());
+                        $img = $manager->read($sourcePath);
+                        $img->save($dPath);
 
-                    $galleryImagePaths[] = $newFileName;
+                        $galleryImagePaths[] = $newFileName;
 
-                    // Optionally delete temp file
-                    File::delete($sourcePath);
+                        // Optionally delete temp file
+                        File::delete($sourcePath);
+                    }
                 }
 
                 // Store gallery images paths in the service table
-                $service->gallery_images = json_encode($galleryImagePaths);  // Assuming you're storing as a JSON string
+                $service->gallery_images = json_encode($galleryImagePaths);
                 $service->save();
             }
 
@@ -165,11 +178,11 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:services,name,' . $service->id . ',id',
             'slug' => 'required|unique:services,slug,' . $service->id . ',id',
+            'meta_title' => 'required|unique:services,meta_title,' . $service->id . ',id',
             'category' => 'required',
             'videos_link' => 'nullable|url',
             'short_description' => 'nullable',
             'status' => 'required|in:0,1',
-            // Add validation rules for additional_videos_links if needed
         ]);
 
         if ($validator->passes()) {
@@ -188,6 +201,9 @@ class ServiceController extends Controller
             $service->category_id = $request->category;
             $service->description = $request->description;
             $service->short_desc = $request->short_description;
+            $service->meta_title = $request->meta_title;
+            $service->meta_description = $request->meta_description;
+            $service->meta_keywords = $request->meta_keywords;
             $service->videos_link = $request->videos_link;
             $service->status = $request->status;
             $service->additional_videos_links = json_encode($request->additional_videos_links); // Save as JSON
@@ -200,7 +216,7 @@ class ServiceController extends Controller
                 $imageArray = explode('.', $tempFileName);
                 $ext = end($imageArray);
 
-                $newFileName = 'service-' . strtotime('now') . '-' . $service->id . '.' . $ext;
+                $newFileName = pathinfo($tempFileName, PATHINFO_FILENAME) . '-' . $service->slug . '.' . $ext;
 
                 $sourcePath = './uploads/temp/' . $tempFileName;
 
@@ -220,9 +236,6 @@ class ServiceController extends Controller
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($sourcePath);
                 $img->scaleDown(1150);
-                // $img->resize(1150, null, function ($constraint) {
-                //     $constraint->aspectRatio();
-                // });
                 $img->save($dPath);
 
                 // Delete old large thumbnail
@@ -254,7 +267,8 @@ class ServiceController extends Controller
                         $imageArray = explode('.', $tempFileName);
                         $ext = end($imageArray);
 
-                        $newFileName = 'service-gallery-' . $service->id . '-' . uniqid() . '.' . $ext;
+                        // Use slug instead of ID for gallery image name
+                        $newFileName = $tempFileName . '-' . $service->slug . '.' . $ext;
 
                         $sourcePath = './uploads/temp/' . $tempFileName;
 

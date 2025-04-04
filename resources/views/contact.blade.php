@@ -97,10 +97,13 @@
             </div>
         </div>
     </div>
+    
+    @include('common.review')
+
+    @include('common.company')
 </section>
 
 @endsection
-
 
 @section('extraJs')
 <script type="text/javascript">
@@ -147,3 +150,5 @@
     });
 </script>
 @endsection
+
+

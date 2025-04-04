@@ -29,9 +29,8 @@ class ContactMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Contact Mail',
-        );
+        return new Envelope(subject : 'Contact Mail');
+        
     }
 
     /**
@@ -39,7 +38,10 @@ class ContactMail extends Mailable
      */
     public function content(): Content
     {
-        return new Content(view: 'email.contactEmail');
+
+        return new Content(
+            view: 'email.contactEmail',
+        );
     }
 
     /**

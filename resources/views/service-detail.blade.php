@@ -87,7 +87,11 @@
             <div class="services-slider">
                 @foreach ($gallery_images as $image)
                 <div class="slider-item">
-                    <img src="{{ asset('uploads/services/gallery/'.$image) }}" class="img-fluid" alt="Gallery Image">
+                    @if(!empty($image))
+                    <img src="{{ asset('uploads/services/gallery/'.$image) }}" class="img-fluid" alt="Image">
+                    @else
+                    <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="Image">
+                    @endif
                 </div>
                 @endforeach
             </div>
@@ -95,7 +99,6 @@
     </div>
 </section>
 @endif
-
 
 @include('common.review')
 
