@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
-    //This method will dasgboard page for admin
-    public function index(){
-
+    // This method will return the dashboard page for the admin
+    public function index() {
         $dayBeforeToday = Carbon::now()->subDays(1)->format('Y-m-d');
 
-        //delete temp image
+        // Delete temp images
         $tempFiles = TempFile::where('created_at','<=',$dayBeforeToday)->get();
 
         foreach($tempFiles as $tempFile){
@@ -25,6 +24,11 @@ class DashboardController extends Controller
             }
             TempFile::where('id',$tempFile->id)->delete();
         }
-        return view('admin.dashboard');
+
+        return view('admin.dashboard', [
+            'meta_title' => 'ADMIN DASHBOARD | MIRROR MIRROR MIRROR SERVICES L.L.C',
+            'meta_description' => 'MANAGE ADMIN SETTINGS AND DATA AT MIRROR BOOTH EVENT SERVICES L.L.C.',
+            'meta_keywords' => 'ADMIN DASHBOARD, MIRROR MIRROR, EVENTS, ADMIN PANEL, MIRROR MIRROR MIRROR SERVICES L.L.C.'
+        ]);
     }
 }

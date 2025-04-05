@@ -81,6 +81,7 @@
                                     <th width="50">Category Name</th>
                                     <th width="50">Meta Title</th>
                                     <th width="50">Meta Keywords</th>
+                                    <th width="50">Meta Description</th>
                                     <th width="80">Image</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
@@ -95,11 +96,12 @@
                                     <td>{{ $service->categoryName }}</td>
                                     <td>{{ $service->meta_title}}</td>
                                     <td>{{ $service->meta_keywords}}</td>
+                                    <td>{{ $service->meta_description}}</td>
                                     <td>
-                                        @if(!empty($service->image))
-                                        <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" alt="image" width="50">
+                                        @if(!empty($service->image) && file_exists(public_path('uploads/services/thumb/small/' . $service->image)))
+                                            <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" alt="image" width="50">
                                         @else
-                                        <img src="{{ asset('uploads/placeholder.jpg') }}" alt="image" width="50">
+                                            <img src="{{ asset('uploads/placeholder.jpg') }}" alt="image" width="50">
                                         @endif
                                     </td>
                                     <td>{{ date('d/m/Y',strtotime($service->created_at)) }}</td>

@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Services / Edit</h1>
+                    <h1 class="m-0">CATEGORY / Edit</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -48,17 +48,19 @@
 
                                 <div class="form-group">
                                     <label for="meta_title">Meta Title</label>
-                                    <input type="text" value="{{ $category->meta_title }}" name="meta_title" id="meta_title" class="form-control">
+                                    <input type="text" value="{{ $category->meta_title }}" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
                                     <p class="error meta_title-error"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
-                                    <textarea name="meta_description" id="meta_description" class="summernote">{{ $category->meta_description }}</textarea>
+                                    <textarea name="meta_description" id="meta_description" class="summernote"  placeholder="MAX 160 CHARACTERS">{{ $category->meta_description }}</textarea>
+                                    <p class="error meta_description-error"></p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta Keywords</label>
-                                    <input type="text" value="{{ $category->meta_keywords }}" name="meta_keywords" id="meta_keywords" class="form-control">
+                                    <textarea name="meta_keywords" id="meta_keywords" class="summernote" placeholder="MAX 160 CHARACTERS">{{ $category->meta_keywords }}</textarea>
+                                    <p class="error meta_keywords-error"></p>
                                 </div>
 
                                 <div class="form-group mt-4">

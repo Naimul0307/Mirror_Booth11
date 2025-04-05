@@ -35,16 +35,18 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories',
             'slug' => 'required|unique:categories',
-            'meta_title' => 'required|unique:categories',
+            'meta_title' => 'required|unique:categories|max:70',
+            'meta_description' => 'required|unique:categories|max:150',
+            'meta_keywords' => 'required|unique:categories|max:150',
         ]);
 
         if($validator->passes()) {
             $category = new Category;
             $category->name = $request->name;
             $category->slug = $request->slug;
-            $category->meta_title = $request->meta_title;
-            $category->meta_description = $request->meta_description;
-            $category->meta_keywords = $request->meta_keywords;
+            $category->meta_title = $request->meta_title ?: $request->name . '| MIRROR BOOTH EVENT SERVICES L.L.C';
+            $category->meta_description = $request->meta_description ?: 'EXPLORE OUR ' . $request->name . ' SERVICES OFFERED BY MIRROR BOOTH EVENT SERVICES L.L.C IN DUBAI.';
+            $category->meta_keywords = $request->meta_keywords ?: 'MIRROR BOOTH, EVENT SERVICES, ' . $request->name . ', DUBAI,UAE';
             $category->status = $request->status;
 
             $category->save();
@@ -82,15 +84,17 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        $validator = Validator::make($request->all(),[
-            'name' => 'required|unique:categories,name,'.$category->id.',id',
-            'slug' => 'required|unique:categories,slug,'.$category->id.',id',
-            'meta_title' => 'required|unique:categories,meta_title,'.$category->id.',id',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:categories,name,' . $category->id . ',id',
+            'slug' => 'required|unique:categories,slug,' . $category->id . ',id',
+            'meta_title' => 'nullable|string|max:80|unique:categories,meta_title,' . $category->id . ',id',
+            'meta_description' => 'nullable|string|max:150|unique:categories,meta_description,' . $category->id . ',id',
+            'meta_keywords' => 'nullable|string|max:150|unique:categories,meta_keywords,' . $category->id . ',id',
+            'status' => 'required|in:0,1',
         ]);
 
         if($validator->passes()) {
             // Form validated successfully
-
             if(empty($category)){
                 $request->session()->flash('error','Record not found in DB');
                 return response()->json([
@@ -100,9 +104,9 @@ class CategoryController extends Controller
 
             $category->name = $request->name;
             $category->slug = $request->slug;
-            $category->meta_title = $request->meta_title;
-            $category->meta_description = $request->meta_description;
-            $category->meta_keywords = $request->meta_keywords;
+            $category->meta_title = $request->meta_title ?: $request->name . '| MIRROR BOOTH EVENT SERVICES L.L.C';
+            $category->meta_description = $request->meta_description ?: 'EXPLORE OUR ' . $request->name . ' SERVICES OFFERED BY MIRROR BOOTH EVENT SERVICES L.L.C IN DUBAI.';
+            $category->meta_keywords = $request->meta_keywords ?: 'MIRROR BOOTH, EVENT SERVICES, ' . $request->name . ', DUBAI,UAE';
             $category->status = $request->status;
             $category->save();
 

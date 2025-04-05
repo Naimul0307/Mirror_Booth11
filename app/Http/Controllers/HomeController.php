@@ -20,9 +20,11 @@ class HomeController extends Controller
 
         $data['groupedServices'] = $groupedServices; // Pass grouped services to the view
         $data['categories'] = $categories; // Pass categories to the view
-        $data['meta_title'] = 'HOME | MIRROR BOOTH DUABI';
-        $data['meta_description'] = 'Welcome to Mirror Booth Dubai';
-        $data['meta_keywords'] = 'mirror booth, photo booth, dubai, events';
+
+        $data['meta_title'] = 'HOME | MIRROR BOOTH EVENT SERVICES L.L.C.-DUBAI,UAE';
+        $data['meta_description'] = 'WELCOME TO MIRROR BOOTH EVENT SERVICES L.L.C. PROVIDING PREMIUM PHOTO BOOTH SERVICES FOR EVENTS IN DUBAI. CAPTURE MEMORIES WITH OUR PROFESSIONAL SERVICES.';
+        $data['meta_keywords'] = 'MIRROR BOOTH, PHOTO BOOTH, VIDEOS BOOTH, MAGAZIN BOOTH, EVENT SERVICES, MIRROR BOOTH EVENT SERVICES L.L.C, DUBAI, UAE';
+
         return view('home', $data); // Adjust this to your view file
     }
 }

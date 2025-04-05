@@ -13,11 +13,10 @@ class ContactController extends Controller
         $settings = getSettings();
         return view('contact', [
             'settings' => $settings,
-            'meta_title' => 'CONTACT US | MIRROR BOOTH DUABI',
-            'meta_description' => 'Get in touch with Mirror Booth Dubai for bookings or inquiries.',
-            'meta_keywords' => 'contact, mirror booth, dubai, booking'
+            'meta_title' => 'CONTACT US | MIRROR BOOTH EVENT SERVICES L.L.C. - DUBAI,UAE',
+            'meta_description' => 'GET IN TOUCH WITH MIRROR BOOTH EVENT SERVICES L.L.C FOR BOOKING OR INQUIRIES. CONTACT US TODAY TO MAKE YOUR EVENT UNFORGETTABLE WITH OUR PHOTO BOOTH SERVICES.',
+            'meta_keywords' => 'CONTACT, MIRROR BOOTH, DUBAI, BOOKING,UAE, MIRROR BOOTH EVENt SERVICES L.L.C'
         ]);
-
     }
 
    public function sendEmail(Request $request){

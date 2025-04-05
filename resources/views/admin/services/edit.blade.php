@@ -68,25 +68,21 @@
                                     <label for="short_description">Short Description</label>
                                     <textarea name="short_description" id="short_description" cols="30" rows="7" class="form-control">{{ $service->short_desc }}</textarea>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="meta_title">Meta Title</label>
-                                    <input type="text" value="{{ $service->meta_title }}" name="meta_title" id="meta_title" class="form-control">
+                                    <input type="text" value="{{ $service->meta_title }}" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
                                     <p class="error meta_title-error"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
-                                    <textarea name="meta_description" id="meta_description" class="summernote">{{ $service->meta_description }}</textarea>
+                                    <textarea name="meta_description" id="meta_description" class="summernote"  placeholder="MAX 160 CHARACTERS">{{ $service->meta_description }}</textarea>
+                                    <p class="error meta_description-error"></p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta Keywords</label>
-                                    <input type="text" value="{{ $service->meta_keywords }}" name="meta_keywords" id="meta_keywords" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="videos_link">Videos Link</label>
-                                    <input type="text" name="videos_link" value="{{ $service->videos_link }}" id="videos_link" class="form-control">
+                                    <textarea name="meta_keywords" id="meta_keywords" class="summernote" placeholder="MAX 160 CHARACTERS">{{ $service->meta_keywords }}</textarea>
+                                    <p class="error meta_keywords-error"></p>
                                 </div>
 
                                 <!-- New Video Links Section -->
@@ -109,6 +105,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <!-- Main Image Upload -->
                                         <input type="hidden" name="image_id" id="image_id" value="">
                                         <label for="image">Image</label>
                                         <div id="image" class="dropzone dz-clickable">
@@ -118,13 +115,13 @@
                                         </div>
 
                                         @if(!empty($service->image))
-                                        <img class="img-thumbnail my-4" src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" width="300">
-                                        <button type="button" class="btn btn-danger btn-sm remove-image" data-image="{{ $service->image }}">Remove</button>
+                                            <img class="img-thumbnail my-4" src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" width="300">
+                                            <button type="button" class="btn btn-danger btn-sm remove-image" data-image="{{ $service->image }}">Remove</button>
                                         @endif
                                     </div>
 
                                     <div class="col-md-6">
-                                        <!-- Gallery Image Upload Section -->
+                                        <!-- Gallery Image Upload -->
                                         <div class="form-group">
                                             <label for="gallery">Image Gallery</label>
                                             <div id="gallery" class="dropzone dz-clickable">
@@ -146,7 +143,7 @@
                                             @endif
                                         </div>
                                     </div>
-
+                                </div>
 
                                 <div class="form-group mt-4">
                                     <label for="status">Status</label>

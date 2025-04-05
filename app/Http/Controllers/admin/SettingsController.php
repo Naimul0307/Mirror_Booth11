@@ -20,17 +20,17 @@ class SettingsController extends Controller
                             ->leftJoin('categories','categories.id','featured_services.category_id')
                             ->orderBy('sort_order','ASC')->get();
 
-        // $services = Service::orderBy('name','asc')->get();
-        // $featuredServices = FeaturedService::select('services.name','featured_services.*')
-        //                     ->leftJoin('services','services.id','featured_services.service_id')
-        //                     ->orderBy('sort_order','ASC')->get();
-
-
-        return view('admin.settings',['settings'=>$settings,'categories' => $categories,'featuredServices'=>$featuredServices]);
+        return view('admin.settings', [
+            'settings' => $settings,
+            'categories' => $categories,
+            'featuredServices' => $featuredServices,
+            'meta_title' => 'SETTINGS | MIRROR BOOTH EVENT SERVICES L.L.C',
+            'meta_description' => 'CONFIGURE AND MANAGE THE SETTINGS FOR MIRROR BOOTH EVENT SERVICES L.L.C',
+            'meta_keywords' => 'SETTINGS, ADMIN, MIRROR BOOTH, SERVICES, EVENTS, ADMIN PANEl, MIRROR BOOTH EVENT SERVICES L.L.C'
+        ]);
     }
 
     public function save(Request $request){
-
         $validator = Validator::make($request->all(),[
             'website_title' => 'required'
         ]);
@@ -38,9 +38,7 @@ class SettingsController extends Controller
         parse_str($request->categories,$categoryArray);
 
         if (!empty($categoryArray['category'])){
-
             FeaturedService::truncate();
-
             foreach($categoryArray['category'] as $key => $category) {
                 $featuredService = new FeaturedService;
                 $featuredService->category_id = $category;
@@ -49,10 +47,8 @@ class SettingsController extends Controller
             }
         }
 
-
         if($validator->passes()) {
             // Save form values here
-
             $settings = Setting::find(1);
             if ($settings == null) {
                 $settings = new Setting;
@@ -89,15 +85,13 @@ class SettingsController extends Controller
                 $settings->save();
             }
 
-            $request->session()->flash('success','Settings saved successfully');
+            $request->session()->flash('success', 'Settings saved successfully');
 
             return response()->json([
                 'status' => 200,
             ]);
-
         } else {
-            // retrun errors here
-
+            // Return errors here
             return response()->json([
                 'status' => 0,
                 'errors' => $validator->errors()

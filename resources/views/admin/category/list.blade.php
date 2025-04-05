@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Services / List</h1>
+                    <h1 class="m-0">CATEGORY / List</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -67,6 +67,7 @@
                                     <th width="50">Slug</th>
                                     <th width="50">Meta Title</th>
                                     <th width="50">Meta Keywords</th>
+                                    <th width="50">Meta Description</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
                                     <th width="100">Action</th>
@@ -79,6 +80,7 @@
                                     <td>{{ $category->slug }}</td>
                                     <td>{{ $category->meta_title}}</td>
                                     <td>{{ $category->meta_keywords}}</td>
+                                    <td>{{ $category->meta_description}}</td>
                                     <td>{{ date('d/m/Y',strtotime($category->created_at)) }}</td>
                                     <td>
                                         @if($category->status == 1)
