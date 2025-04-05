@@ -13,9 +13,9 @@
                                 <div class="col-md-3 col-sm-4 mb-4">
                                     <div class="card border-0 text-center">
                                         @if(!empty($service->image))
-                                            <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" class="card-img-top" alt="">
+                                            <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" class="card-img-top" alt="{{ $service->image_alt_text ?? 'Image' }}">
                                         @else
-                                            <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="">
+                                            <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="Image">
                                         @endif
                                         <div class="card-body p-3">
                                             <h1 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h1>

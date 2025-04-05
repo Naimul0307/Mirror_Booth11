@@ -49,18 +49,15 @@
                                 <div class="form-group">
                                     <label for="meta_title">Meta Title</label>
                                     <input type="text" value="{{ $category->meta_title }}" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
-                                    <p class="error meta_title-error"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
-                                    <textarea name="meta_description" id="meta_description" class="summernote"  placeholder="MAX 160 CHARACTERS">{{ $category->meta_description }}</textarea>
-                                    <p class="error meta_description-error"></p>
+                                    <textarea name="meta_description" id="meta_description" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS">{{ $category->meta_description }}</textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta Keywords</label>
-                                    <textarea name="meta_keywords" id="meta_keywords" class="summernote" placeholder="MAX 160 CHARACTERS">{{ $category->meta_keywords }}</textarea>
-                                    <p class="error meta_keywords-error"></p>
+                                    <textarea name="meta_description" id="meta_description" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS">{{ $category->meta_keywords }}</textarea>
                                 </div>
 
                                 <div class="form-group mt-4">

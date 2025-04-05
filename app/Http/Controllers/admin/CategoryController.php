@@ -35,9 +35,6 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories',
             'slug' => 'required|unique:categories',
-            'meta_title' => 'required|unique:categories|max:70',
-            'meta_description' => 'required|unique:categories|max:150',
-            'meta_keywords' => 'required|unique:categories|max:150',
         ]);
 
         if($validator->passes()) {
@@ -87,10 +84,6 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:categories,name,' . $category->id . ',id',
             'slug' => 'required|unique:categories,slug,' . $category->id . ',id',
-            'meta_title' => 'nullable|string|max:80|unique:categories,meta_title,' . $category->id . ',id',
-            'meta_description' => 'nullable|string|max:150|unique:categories,meta_description,' . $category->id . ',id',
-            'meta_keywords' => 'nullable|string|max:150|unique:categories,meta_keywords,' . $category->id . ',id',
-            'status' => 'required|in:0,1',
         ]);
 
         if($validator->passes()) {

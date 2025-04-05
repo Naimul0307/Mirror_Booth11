@@ -51,9 +51,6 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:services',
             'slug' => 'required|unique:services',
-            'meta_title' => 'required|unique:services|max:70',
-            'meta_description' => 'required|unique:services|max:150',
-            'meta_keywords' => 'required|unique:services|max:150',
             'category' => 'required',
         ]);
 
@@ -72,6 +69,7 @@ class ServiceController extends Controller
             $service->videos_link = $request->videos_link;
             $service->additional_videos_links = $request->input('additional_videos_links'); // Array of additional video links\
             $service->status = $request->status;
+            $service->image_alt_text = $request->image_alt_text;
             $service->save();
 
             if ($request->image_id > 0) {
@@ -180,9 +178,6 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:services,name,' . $service->id . ',id',
             'slug' => 'required|unique:services,slug,' . $service->id . ',id',
-            'meta_title' => 'nullable|string|max:70|unique:services,meta_title,' . $service->id . ',id',
-            'meta_description' => 'nullable|string|max:150|unique:services,meta_description,' . $service->id . ',id',
-            'meta_keywords' => 'nullable|string|max:150|unique:services,meta_keywords,' . $service->id . ',id',
             'category' => 'required',
             'videos_link' => 'nullable|url',
             'short_description' => 'nullable',
@@ -210,7 +205,8 @@ class ServiceController extends Controller
             $service->meta_keywords = $request->meta_keywords ?: 'MIRROR BOOTH, EVENT SERVICES, ' . $request->name . ', DUBAI, UAE';
             $service->videos_link = $request->videos_link;
             $service->status = $request->status;
-            $service->additional_videos_links = json_encode($request->additional_videos_links); // Save as JSON
+            $service->additional_videos_links = json_encode($request->additional_videos_links);
+            $service->image_alt_text = $request->image_alt_text;
             $service->save();
 
             // Handle the main image update

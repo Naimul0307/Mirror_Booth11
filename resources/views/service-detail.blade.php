@@ -34,7 +34,7 @@
                     </div>
                     @else
                     <div class="image-red-background">
-                        <img src="{{ asset('uploads/services/thumb/large/'.$service->image) }}" alt="" class="w-100">
+                        <img src="{{ asset('uploads/services/thumb/large/'.$service->image) }}" class="w-100">
                     </div>
                     @endif
                 @endif
@@ -88,7 +88,7 @@
                 @foreach ($gallery_images as $image)
                 <div class="slider-item">
                     @if(!empty($image))
-                    <img src="{{ asset('uploads/services/gallery/'.$image) }}" class="img-fluid" alt="Image">
+                    <img src="{{ asset('uploads/services/gallery/'.$image) }}" class="img-fluid" alt="{{ $service->image_alt_text ?? 'Image' }}">
                     @else
                     <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="Image">
                     @endif

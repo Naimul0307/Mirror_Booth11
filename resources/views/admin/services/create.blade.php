@@ -94,19 +94,16 @@
                                 <div class="form-group">
                                     <label for="meta_title">Meta Title</label>
                                     <input type="text" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
-                                    <p class="error meta_title-error"></p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
-                                    <textarea name="meta_description" id="meta_description" class="summernote"  placeholder="MAX 160 CHARACTERS"></textarea>
-                                    <p class="error meta_description-error"></p>
+                                    <textarea name="meta_description" id="meta_description" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS"></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta Keywords</label>
-                                    <textarea name="meta_keywords" id="meta_keywords" class="summernote" placeholder="MAX 160 CHARACTERS"></textarea>
-                                    <p class="error meta_description-error"></p>
+                                    <textarea name="meta_keywords" id="meta_keywords" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS"></textarea>
                                 </div>
 
                                 <div class="row">
@@ -130,7 +127,11 @@
                                     </div>
                                 </div>
 
-
+                                <div class="form-group">
+                                    <label for="image_alt_text">Image Alt Text</label>
+                                    <textarea name="image_alt_text" id="metaimage_alt_text_keywords" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS"></textarea>
+                                </div>
+                                
                                 <div class="form-group mt-4">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
