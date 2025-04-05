@@ -28,7 +28,7 @@
 <section class="section-2 py-5">
     <div class="container py-2">
         <div class="about-block">
-            <h1 class="title-color">MIRROR BOOTH EVENT SERVICES L.L.C.</h1>
+            <h2 class="title-color">MIRROR BOOTH EVENT</h2>
             <div class="divider-container">
                 <div class="divider mb-3"></div>
             </div>
