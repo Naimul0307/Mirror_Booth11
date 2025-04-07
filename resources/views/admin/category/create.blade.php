@@ -48,7 +48,7 @@
 
                                 <div class="form-group">
                                     <label for="meta_title">Meta Title</label>
-                                    <input type="text" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">>
+                                    <input type="text" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
                                 </div>
 
                                 <div class="form-group">

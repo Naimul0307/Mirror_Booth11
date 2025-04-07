@@ -79,7 +79,7 @@
 
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta Keywords</label>
-                                    <textarea name="meta_description" id="meta_description" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS">{{ $service->meta_keywords }}</textarea>
+                                    <textarea name="meta_keywords" id="meta_keywords" cols="30" rows="7" class="form-control"  placeholder="MAX 160 CHARACTERS">{{ $service->meta_keywords }}</textarea>
                                 </div>
 
                                 <!-- Existing Video Link Section -->
