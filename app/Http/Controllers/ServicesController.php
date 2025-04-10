@@ -10,7 +10,7 @@ class ServicesController extends Controller
     public function index()  {
         $services = Service::where('status',1)->orderBy('id','asc')->get();
         $data['services'] = $services;
-        $data['meta_title'] = 'All SERVICES | MIRROR BOOTH EVENT SERVICES L.L.C.-DUBAI,UAE';
+        $data['meta_title'] = 'All SERVICES | MIRROR BOOTH EVENT SERVICES L.L.C.-DUBAI';
         $data['meta_description'] = 'EXPLORE OUR FULL RANGE OF PROFESSIONAL EVENT SERVICES IN DUBAI,UAE';
         $data['meta_keywords'] = 'MIRROR BOOTH, PHOTO BOOTH, VIDEOS BOOTH, MAGAZIN BOOTH, EVENT SERVICES, MIRROR BOOTH EVENT SERVICES L.L.C, DUBAI, UAE';
         return view('services',$data);

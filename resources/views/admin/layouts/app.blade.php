@@ -15,7 +15,19 @@
         <link rel="stylesheet" href="{{ asset('admin_assets/assets/plugins/jquery-ui/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/custom.css') }}">
         <link rel="shortcut icon" href="{{ asset('assets/favicon.ico')}}" type="image/x-icon">
+        <!-- Favicon for Desktop and Mobile -->
+        <link rel="shortcut icon" href="{{ asset('assets/favicon.ico')}}" type="image/x-icon">
+    
+        <!-- Apple Touch Icon (for iOS and iPad) -->
+        <link rel="apple-touch-icon" href="{{ asset('assets/apple-touch-icon.png') }}" sizes="180x180">
+            
+        <!-- Android Icon -->
+        <link rel="icon" href="{{ asset('assets/android-chrome-192x192.png') }}" sizes="192x192" type="image/png">
+            
+        <!-- For higher resolution Android devices -->
+        <link rel="icon" href="{{ asset('assets/android-chrome-512x512.png') }}" sizes="512x512" type="image/png">
     </head>
+
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
             <!-- Navbar -->

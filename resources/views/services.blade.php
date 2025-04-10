@@ -4,11 +4,18 @@
 <section class="section-3 py-5">
 </section>
 
-<section class="section-3 py-5">
-    <div class="container">
-        <h2 class="title-color mb-4 h1 text-center">Services</h2>
-        <div class="divider-container text-center">
-            <div class="divider mb-3"></div>
+<section class="section-2 py-5">
+    <div class="container py-2">
+        <div class="about-block">
+            <h1 class="title-color text-center">MIRROR BOOTH DUBAI</h1>
+            <div class="divider-container text-center">
+                <div class="divider mb-3"></div>
+            </div>
+            <div class="mt-2 mb-3 text-muted">ALL SERVICES RENTAL DUBAI</div>
+
+            <div class="mt-2 mb-3 text-muted">Award Winning Interactive Photo Booth Services In Dubai</div>
+            <p>A professional and well-experienced photobooth supplier in the UAE. We deliver client satisfaction and event perfection in all of our services.
+            <br>Our goal is to make memorable and meaningful events for everyone.</p>
         </div>
     </div>
 </section>
@@ -28,7 +35,7 @@
                             <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="Image">
                             @endif
                             <div class="card-body p-3">
-                                <h1 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h1>
+                                <h4 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h4>
                                 <div class="content pt-2">
                                     <p class="card-text">{{ $service->short_desc }}</p>
                                 </div>

@@ -13,8 +13,8 @@ class ContactController extends Controller
         $settings = getSettings();
         return view('contact', [
             'settings' => $settings,
-            'meta_title' => 'CONTACT US | MIRROR BOOTH EVENT SERVICES L.L.C. - DUBAI,UAE',
-            'meta_description' => 'GET IN TOUCH WITH MIRROR BOOTH EVENT SERVICES L.L.C FOR BOOKING OR INQUIRIES. CONTACT US TODAY TO MAKE YOUR EVENT UNFORGETTABLE WITH OUR PHOTO BOOTH SERVICES.',
+            'meta_title' => 'CONTACT US | MIRROR BOOTH EVENT SERVICES L.L.C. - DUBAI',
+            'meta_description' => 'Get in touch with Mirror Booth Event Services L.L.C. for bookings or inquiries. Contact us today to make your event unforgettable with our photo booth services.',
             'meta_keywords' => 'CONTACT, MIRROR BOOTH, DUBAI, BOOKING,UAE, MIRROR BOOTH EVENt SERVICES L.L.C'
         ]);
     }
