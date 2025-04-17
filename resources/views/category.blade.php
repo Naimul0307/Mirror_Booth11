@@ -37,7 +37,7 @@
                             <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="image">
                             @endif
                             <div class="card-body p-3">
-                                <h1 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h1>
+                                <h3 class="card-title mt-2"><a href="{{ route('service.detail', ['slug' => $service->slug]) }}">{{ $service->name }}</a></h3>
                                 <div class="content pt-2">
                                     <p class="card-text">{{ $service->short_desc }}</p>
                                 </div>

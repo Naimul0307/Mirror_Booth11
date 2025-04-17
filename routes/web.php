@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
 use App\Http\Controllers\admin\ServiceController;
+use App\Http\Controllers\admin\AdminBlogsController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\CategoriesController;
@@ -55,23 +56,17 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('logout',[AdminLoginController::class, 'logout'])->name('admin.logout');
         Route::get('dashboard',[AdminDashboardController::class,'index'])->name('admin.dashboard');
 
+         //service route
         Route::get('/services/create',[ServiceController::class,'create'])->name('service.create.form');
-
         Route::post('/services/create',[ServiceController::class,'save'])->name('service.create');
-
         Route::post('/temp/upload',[TempImageController::class,'upload'])->name('tempUpload');
         Route::post('/temp/uploads',[TempImageController::class,'uploadGalleryImage'])->name('uploadGalleryImage');
-
         Route::post('/service/{id}/remove-image', [ServiceController::class, 'removeMainImage'])->name('service.remove.image');
         Route::post('/service/{id}/remove-gallery-image', [ServiceController::class, 'removeGalleryImage'])->name('service.remove.gallery.image');
-
         Route::get('/services',[ServiceController::class,'index'])->name('serviceList');
         Route::get('/services/edit/{id}',[ServiceController::class,'edit'])->name('service.edit');
-
         Route::post('/services/edit/{id}',[ServiceController::class,'update'])->name('service.edit.update');
-
         Route::post('/services/delete/{id}',[ServiceController::class,'delete'])->name('service.delete');
-
         Route::get('/services/get-slug',[ServiceController::class,'getSlug'])->name('service.slug');
 
         //category route
@@ -83,6 +78,15 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('/category/delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
         Route::get('/category/get-slug',[CategoryController::class,'getSlug'])->name('category.slug');
 
+       // Blog Routes
+       Route::get('/blog',[AdminBlogsController::class, 'index'])->name('bloglist');
+       Route::get('/blogs/create',[AdminBlogsController::class,'create'])->name('blogs.create.form');
+       Route::post('/blogs/create',[AdminBlogsController::class,'save'])->name('blogs.create');
+       Route::get('/blogs/edit/{id}',[AdminBlogsController::class,'edit'])->name('blogs.edit');
+       Route::post('/blogs/edit/{id}', [AdminBlogsController::class, 'update'])->name('blogs.update');
+       Route::post('/blogs/delete/{id}',[AdminBlogsController::class,'delete'])->name('blogs.delete');
+       Route::get('/blogs/get-slug',[AdminBlogsController::class,'getSlug'])->name('blogs.slug');
+       Route::post('/blogs/{id}/remove-image', [AdminBlogsController::class, 'removeMainImage'])->name('blogs.remove.image');
 
         // Setting Routes
         Route::get('/settings',[SettingsController::class,'index'])->name('settings.index');

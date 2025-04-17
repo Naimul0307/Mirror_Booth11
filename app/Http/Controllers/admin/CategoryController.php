@@ -117,7 +117,6 @@ class CategoryController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-        return view();
     }
 
     public function delete($id, Request $request) {

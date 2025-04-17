@@ -72,7 +72,12 @@
                                     <p>Manage Services</p>
                                 </a>
                             </li>
-
+                            <li class="nav-item">
+                                <a href="{{ route('bloglist') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Manage Blog</p>
+                                </a>
+                            </li>
 							<li class="nav-item">
                                 <a href="{{ route('settings.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>

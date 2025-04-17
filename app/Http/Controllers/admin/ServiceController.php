@@ -207,6 +207,7 @@ class ServiceController extends Controller
             $service->status = $request->status;
             $service->additional_videos_links = json_encode($request->additional_videos_links);
             $service->image_alt_text = $request->image_alt_text;
+            $service->image_alt_text = $request->image_alt_text ?: $request->name . ' | MIRROR BOOTH EVENT SERVICES L.L.C';
             $service->save();
 
             // Handle the main image update

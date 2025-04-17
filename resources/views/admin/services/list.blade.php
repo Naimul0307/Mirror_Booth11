@@ -87,7 +87,7 @@
                                     <th width="100">Status</th>
                                     <th width="100">Action</th>
                                 </tr>
-                                @if (!empty($services))
+                                @if (!empty($services) && count($services) > 0)
                                     @foreach ($services as $service)
                                 <tr>
                                     <td>{{ $service->id }}</td>
@@ -132,8 +132,9 @@
 
                                 @else
                                 <tr>
-                                    <td colspan="6">Records Not Found</td>
+                                    <td colspan="11" class="text-center">Records Not Found</td>
                                 </tr>
+                                
                                 @endif
                             </table>
                         </div>

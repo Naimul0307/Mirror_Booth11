@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">CATEGORY / List</h1>
+                    <h1 class="m-0">Blogs / List</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -26,8 +26,8 @@
         <div class="container-fluid  h-100"">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-
-                <div class="col-md-12 ">
+                
+                <div class="col-md-12 ">	
 
                     @if(Session::has('success'))
                     <div class="alert alert-success">
@@ -40,11 +40,11 @@
                         {{ Session::get('error') }}
                     </div>
                     @endif
-
+                    						
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <a href="{{ route('category.create') }}" class="btn btn-primary">Create</a>
+                                <a href="{{ route('blogs.create.form') }}" class="btn btn-primary">Create</a>
                             </div>
                             <div class="card-tools">
                                 <form action="" method="get">
@@ -63,63 +63,66 @@
                             <table class="table">
                                 <tr>
                                     <th width="50">Id</th>
-                                    <th width="50">Name</th>
-                                    <th width="50">Slug</th>
-                                    <th width="50">Meta Title</th>
-                                    <th width="50">Meta Keywords</th>
-                                    <th width="50">Meta Description</th>
+                                    <th width="80">Image</th>
+                                    <th>Title</th>
+                                    <th>Slug</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
-                                    <th width="100">Action</th>
+                                    <th width="100">Action</th>                                    
                                 </tr>
-                                @if (!empty($categories) && count($categories) > 0)
-                                @foreach ($categories as $category)
+                                @if (!empty($blogs) && count($blogs) > 0)
+                                    @foreach ($blogs as $blog)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->slug }}</td>
-                                    <td>{{ $category->meta_title}}</td>
-                                    <td>{{ $category->meta_keywords}}</td>
-                                    <td>{{ $category->meta_description}}</td>
-                                    <td>{{ date('d/m/Y',strtotime($category->created_at)) }}</td>
+                                    <td>{{ $blog->id }}</td>
                                     <td>
-                                        @if($category->status == 1)
+                                        @if(!empty($blog->image) && file_exists(public_path('uploads/blogs/thumb/small/' . $blog->image)))
+                                        <img src="{{ asset('uploads/blogs/thumb/small/'.$blog->image) }}" alt="image" width="50">
+                                        @else
+                                        <img src="{{ asset('uploads/placeholder.jpg') }}" alt="image" width="50">
+                                         @endif
+                                    </td>
+                                    <td>{{ $blog->name }}</td>
+                                    <td>{{ $blog->slug }}</td>
+                                    <td>{{ date('d/m/Y',strtotime($blog->created_at)) }}</td>
+                                    <td>
+                                        @if($blog->status == 1)
                                         <span class="badge bg-success">Active</span>
                                         @else
-                                        <span class="badge bg-danger">Block</span>
+                                        <span class="badge bg-success">Block</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('category.edit',$category->id) }}" class="">
+                                        <a href="{{ route('blogs.edit',$blog->id) }}" class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
                                             </svg>
                                         </a>
                                         &nbsp;
-                                        <a href="javascript:void(0);" class="" onclick="deleteCategory({{ $category->id }});">
+                                        <a href="javascript:void(0);" class="" onclick="deleteBlog({{ $blog->id }});">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
                                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
                                             </svg>
                                         </a>
-                                    </td>
+                                    </td>                                    
                                 </tr>
                                 @endforeach
+
                                 @else
                                 <tr>
-                                    <td colspan="9" class="text-center">Records Not Found</td>
+                                    <td colspan="11" class="text-center">Records Not Found</td>
                                 </tr>
                                 @endif
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>                            
             </div>
             <!-- /.row -->
             <div class="row">
-                @if(!empty($categories))
-                {{ $categories->links('pagination::bootstrap-4') }}
+                @if(!empty($blogs))
+                {{ $blogs->links('pagination::bootstrap-4') }}
                 @endif
             </div>
 
@@ -132,15 +135,15 @@
 
 @section('extraJs')
 <script type="text/javascript">
-function deleteCategory(id){
+function deleteBlog(id){
     if (confirm("Are you sure you want to delete?")) {
         $.ajax({
-            url: '{{ url("admin/category/delete") }}/'+id,
+            url: '{{ url("admin/blogs/delete") }}/'+id,
             type: 'POST',
             dataType: 'json',
             data: {},
             success: function(response){
-                window.location.href = "{{ route("categoryList") }}";
+                window.location.href = "{{ route("bloglist") }}";
             }
         });
     }

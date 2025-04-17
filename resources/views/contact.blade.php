@@ -35,7 +35,7 @@
                 @endif
             </div>
             <div class="col-lg-8 col-xl-6 text-center mx-auto">
-                <h1 class="mb-4 text-black">We're here to help!</h1>
+                <h2 class="mb-4 text-black">We're here to help!</h2>
             </div>
         </div>
 
