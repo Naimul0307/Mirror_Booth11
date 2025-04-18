@@ -119,27 +119,28 @@ class AdminBlogsController extends Controller
         return view('admin.blog.edit',$data); 
     }
 
-    public function update(Request $request,$id)
-    {
+    public function update($id, Request $request) {
+        
         $blog = Blog::find($id);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:blogs,name,' . $blog->id . ',id',
             'slug' => 'required|unique:blogs,slug,' . $blog->id . ',id',
         ]);
-        
-        if ($validator->passes()) {
+        if($validator->passes()) {
+
+            $blog = Blog::find($id);
+
             if (empty($blog)) {
-                $request->session()->flash('error', 'Record not found');
+                $request->session()->flash('error','Record not found');
                 return response()->json([
-                    'status' => 0,
+                    'status' => 0,                    
                 ]);
             }
 
             $oldImageName = $blog->image;
 
             $blog->name = $request->name;
-            $blog->slug = $request->slug;
             $blog->description = $request->description;
             $blog->short_desc = $request->short_description;
             $blog->meta_title = $request->meta_title ?: $request->name . ' | MIRROR BOOTH EVENT SERVICES L.L.C';
@@ -147,9 +148,9 @@ class AdminBlogsController extends Controller
             $blog->meta_keywords = $request->meta_keywords ?: 'MIRROR BOOTH, EVENT SERVICES, ' . $request->name . ', DUBAI, UAE';
             $blog->image_alt_text = $request->image_alt_text;
             $blog->status = $request->status;
+            $blog->slug = $request->slug;
             $blog->save();
 
-            // Handle the main image update
             if ($request->image_id > 0) {
                 $tempImage = TempFile::where('id', $request->image_id)->first();
                 $tempFileName = $tempImage->name;
@@ -188,18 +189,15 @@ class AdminBlogsController extends Controller
                 File::delete($sourcePath);
             }
 
-
-            $request->session()->flash('success', 'Blog updated Successfully');
-
-            return redirect()->route('bloglist'); // Redirect to service list route
+            $request->session()->flash('success','Blog updated Successfully');
 
             return response()->json([
                 'status' => 200,
-                'message' => 'Blog Updated Successfully'
+                'message' => 'Blog updated Successfully'                                       
             ]);
 
         } else {
-            // Return validation errors
+            // return errors
             return response()->json([
                 'status' => 0,
                 'errors' => $validator->errors()

@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\admin\AdminBlogsController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
 use App\Http\Controllers\admin\ServiceController;
-use App\Http\Controllers\admin\AdminBlogsController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\TempImageController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Route::get('/sitemap', [SitemapController::class, 'generate']);
 
 Route::get('/',[HomeController::class,'index']);
@@ -26,6 +28,8 @@ Route::get('/services',[ ServicesController::class, 'index' ])->name('services')
 Route::get('/service/{slug}',[ ServicesController::class, 'detail'])->name('service.detail');
 Route::get('/category/{slug}', [CategoriesController::class, 'index'])->name('categories.index');
 Route::get('/contact',[ ContactController::class, 'index' ])->name('contact');
+Route::get('/blogs',[ BlogController::class, 'index' ])->name('blogs');
+Route::get('/blog/{slug}',[ BlogController::class, 'detail' ])->name('blog.detail');
 
 Route::post('/send-email',[ ContactController::class, 'sendEmail' ])->name('sendContactEmail');
 

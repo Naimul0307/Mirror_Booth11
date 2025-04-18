@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit / Create</h1>
+                    <h1 class="m-0">Blogs / Edit</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -28,7 +28,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-md-12 ">							
-                    <form action="" method="post" name="editBlogFrom" id="editBlogFrom">
+                    <form action="" method="post" name="editBlog" id="editBlog">
                         <div class="card">
                             <div class="card-header">
                                 <a href="{{ route('bloglist') }}" class="btn btn-primary">Back</a>
@@ -42,32 +42,30 @@
 
                                 <div class="form-group">
                                     <label for="name">Slug</label>
-                                    <input type="text" value="{{ $blog->slug }}"  name="slug" id="slug" class="form-control">
+                                    <input type="text" name="slug" id="slug" value="{{ $blog->slug }}" class="form-control">
                                     <p class="error slug-error"></p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="name">Description</label>
-                                    <textarea name="description" id="description" class="summernote" >{{ $blog->description }}</textarea>
+                                    <textarea name="description" id="description" class="summernote">{{ $blog->description }}</textarea>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <!-- Main Image Upload -->
                                         <input type="hidden" name="image_id" id="image_id" value="">
-                                        <label for="image">Image</label>
+                                        <label for="Image">Image</label>
                                         <div id="image" class="dropzone dz-clickable">
-                                            <div class="dz-message needsclick">
-                                                <br>Drop files here or click to upload.<br><br>
+                                            <div class="dz-message needsclick">    
+                                                <br>Drop files here or click to upload.<br><br>                                            
                                             </div>
                                         </div>
 
                                         @if(!empty($blog->image))
-                                            <img class="img-thumbnail my-4" src="{{ asset('uploads/blogs/thumb/small/'.$blog->image) }}" width="300">
-                                            <button type="button" class="btn btn-danger btn-sm remove-image" data-image="{{ $blog->image }}">Remove</button>
-                                        @endif
+                                        <img class="img-thumbnail my-4" src="{{ asset('uploads/blogs/thumb/small/'.$blog->image) }}" width="300">    
+                                        <button type="button" class="btn btn-danger btn-sm remove-image" data-image="{{ $blog->image }}">Remove</button>                                   
+                                        @endif                                        
                                     </div>
-
                                     <div class="col-md-6">
                                         <label for="">Short Description</label>
                                         <textarea name="short_description" id="short_description" cols="30" rows="7" class="form-control">{{ $blog->short_desc }}</textarea>
@@ -76,7 +74,7 @@
 
                                 <div class="form-group">
                                     <label for="meta_title">Meta Title</label>
-                                    <input type="text" value="{{ $blog->meta_title }}"  name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
+                                    <input type="text" value="{{ $blog->meta_title }}" name="meta_title" id="meta_title" class="form-control" placeholder="MAX 70 CHARACTERS">
                                 </div>
 
                                 <div class="form-group">
@@ -97,7 +95,7 @@
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
                                         <option value="1" {{ ($blog->status == 1) ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ ($blog->status == 0) ? 'selected' : '' }}>Block</option>
+                                        <option value="0"  {{ ($blog->status == 0) ? 'selected' : '' }}>Block</option>
                                     </select>
                                 </div>
 
@@ -139,42 +137,15 @@
         }
     });
 
-    $(document).on('click', '.remove-image', function() {
-    let imageName = $(this).data('image');
-    $('#image_id').val(''); // Clear the image_id field
-
-    // Remove image preview and button from the DOM
-    $(this).prev('img').remove();
-    $(this).remove();
-
-    // AJAX call to remove the main image from the server and database
-    $.ajax({
-        url: "{{ route('blogs.remove.image', $blog->id) }}",
-        type: 'POST',
-        data: { image: imageName, _token: $('meta[name="_token"]').attr('content') },
-        success: function(response) {
-            if (response.status === 200) {
-                console.log('Main image removed successfully');
-            } else {
-                console.log('Error removing main image: ' + response.message);
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log('AJAX Error: ' + textStatus);
-        }
-    });
-    });
-
     
-    $("#editBlogFrom").submit(function(event){
+    $("#editBlog").submit(function(event){
         event.preventDefault();
         $("button[type='submit']").prop('disabled',true);
-
         $.ajax({
-            url: "{{ route('blogs.update', $blog->id) }}",
+            url: '{{ route("blogs.update",$blog->id) }}',
             type: 'POST',
             dataType: 'json',
-            data: $("#editBlogFrom").serializeArray(),
+            data: $("#editBlog").serializeArray(),
             success: function(response){
                 $("button[type='submit']").prop('disabled',false);
 
@@ -182,8 +153,8 @@
                     // no error
                     window.location.href = '{{ route("bloglist") }}'; 
                 } else {
+                    
                     // Here we will show errors
-
                     if(response.errors.name) {
                         $('.name-error').html(response.errors.name);
                     } else {
@@ -213,6 +184,34 @@
             }
         })
     });
+
+    
+    $(document).on('click', '.remove-image', function() {
+    let imageName = $(this).data('image');
+    $('#image_id').val(''); // Clear the image_id field
+
+    // Remove image preview and button from the DOM
+    $(this).prev('img').remove();
+    $(this).remove();
+
+    // AJAX call to remove the main image from the server and database
+    $.ajax({
+        url: "{{ route('blogs.remove.image', $blog->id) }}",
+        type: 'POST',
+        data: { image: imageName, _token: $('meta[name="_token"]').attr('content') },
+        success: function(response) {
+            if (response.status === 200) {
+                console.log('Main image removed successfully');
+            } else {
+                console.log('Error removing main image: ' + response.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('AJAX Error: ' + textStatus);
+        }
+    });
+    });
+
 </script>
 
 @endsection

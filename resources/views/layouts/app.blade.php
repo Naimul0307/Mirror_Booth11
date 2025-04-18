@@ -50,7 +50,8 @@
                             @endif
                         </ul>
                     </li>
-                    <li><a href="{{ url('/contact')}}">Contact</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                    <li><a href="{{ route('blogs') }}">blog</a></li>
                 </ul>
             </ul>
         </nav>

@@ -33,7 +33,7 @@
                             <div class="card-header">
                                 <a href="{{ route('bloglist') }}" class="btn btn-primary">Back</a>
                             </div>
-                            <div class="card-body"
+                            <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" id="name" class="form-control">

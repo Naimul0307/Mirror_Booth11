@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->integer('status')->default('1');
-            $table->string('image')->default('NULL');
+            $table->string('image')->nullable();
             $table->string('image_alt_text')->nullable();
             $table->timestamps();
         });

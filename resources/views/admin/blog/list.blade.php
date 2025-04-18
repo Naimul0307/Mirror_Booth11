@@ -63,9 +63,12 @@
                             <table class="table">
                                 <tr>
                                     <th width="50">Id</th>
+                                    <th width="50">Name</th>
+                                    <th width="50">Slug</th>
+                                    <th width="50">Meta Title</th>
+                                    <th width="50">Meta Keywords</th>
+                                    <th width="50">Meta Description</th>
                                     <th width="80">Image</th>
-                                    <th>Title</th>
-                                    <th>Slug</th>
                                     <th width="100">Created</th>
                                     <th width="100">Status</th>
                                     <th width="100">Action</th>                                    
@@ -74,6 +77,11 @@
                                     @foreach ($blogs as $blog)
                                 <tr>
                                     <td>{{ $blog->id }}</td>
+                                    <td>{{ $blog->name }}</td>
+                                    <td>{{ $blog->slug }}</td>
+                                    <td>{{ $blog->meta_title}}</td>
+                                    <td>{{ $blog->meta_keywords}}</td>
+                                    <td>{{ $blog->meta_description}}</td>
                                     <td>
                                         @if(!empty($blog->image) && file_exists(public_path('uploads/blogs/thumb/small/' . $blog->image)))
                                         <img src="{{ asset('uploads/blogs/thumb/small/'.$blog->image) }}" alt="image" width="50">
@@ -81,8 +89,6 @@
                                         <img src="{{ asset('uploads/placeholder.jpg') }}" alt="image" width="50">
                                          @endif
                                     </td>
-                                    <td>{{ $blog->name }}</td>
-                                    <td>{{ $blog->slug }}</td>
                                     <td>{{ date('d/m/Y',strtotime($blog->created_at)) }}</td>
                                     <td>
                                         @if($blog->status == 1)

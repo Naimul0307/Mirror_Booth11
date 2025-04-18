@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,56 +17,20 @@ class BlogController extends Controller
         return view('blog',$data);
     }
 
-    public function detail($id){
+    public function detail($slug) {
+        
+        $blog = Blog::where('slug', $slug)->first();
 
-        $blog = Blog::where('id',$id)->first();
-
-        if ($blog == null) {
-            return redirect()->route('blog.front');
+        if (empty($blog)) {
+            return redirect('/');
         }
-
-        $comments = Comment::where('status',1)
-                        ->where('blog_id',$blog->id)
-                        ->orderBY('created_at','ASC')->get();
 
         $data['blog'] = $blog;
-        $data['comments'] = $comments;
+       
+        $data['meta_title'] = $blog->meta_title ?? $blog->name;
+        $data['meta_description'] = $blog->meta_description ?? Str::limit(strip_tags($blog->description), 150);
+        $data['meta_keywords'] = $blog->meta_keywords ?? 'MIRROR BOOTH, PHOTO BOOTH, VIDEOS BOOTH, MAGAZIN BOOTH, EVENT SERVICES, DUBAI, UAE';
 
-        return view('blog-detail',$data);
-
-    }
-
-    public function saveComment(Request $request) {
-        
-        // /new Comment
-
-        $validator = Validator::make($request->all(),[
-            'name' => 'required',
-            'comment' => 'required'
-        ]);
-
-        if($validator->passes()) {
-
-            $comment = new Comment;
-            $comment->name = $request->name;
-            $comment->comment = $request->comment;
-            $comment->blog_id = $request->blog_id;
-            $comment->status = 1;
-            $comment->save();
-
-            return response()->json([
-                'status' => 1,
-                'name' => $comment->name,
-                'comment' => $comment->comment,
-                'created_at' => date('d/m/Y h:i a', strtotime($comment->created_at)),
-            ]);
-
-        } else {
-            return response()->json([
-                'status' => 0,
-                'errors' => $validator->errors()
-            ]);
-        }
-
+        return view('blog-detail', $data);
     }
 }
