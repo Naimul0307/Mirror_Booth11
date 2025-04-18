@@ -11,7 +11,9 @@ class BlogController extends Controller
     public function index() {
     
         $blogs = Blog::where('status',1)->orderBy('created_at','DESC')->get();
-        
+        $data['meta_title'] = 'All BLOG | MIRROR BOOTH EVENT SERVICES L.L.C.-DUBAI';
+        $data['meta_description'] = 'EXPLORE OUR FULL RANGE OF PROFESSIONAL EVENT SERVICES IN DUBAI,UAE';
+        $data['meta_keywords'] = 'MIRROR BOOTH, PHOTO BOOTH, VIDEOS BOOTH, MAGAZIN BOOTH, EVENT SERVICES, MIRROR BOOTH EVENT SERVICES L.L.C, DUBAI, UAE';
         $data['blogs'] = $blogs;
 
         return view('blog',$data);
