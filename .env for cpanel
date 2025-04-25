@@ -1,9 +1,9 @@
 APP_NAME=Mirror_Booth_Dubai
-APP_ENV=local
 APP_KEY=base64:0l8cE3KHX7iH4NOXg71OD/H3mDsIja+TqH6qkUWK+Jc=
-APP_DEBUG=false
 APP_TIMEZONE=UTC
-APP_URL=https://dubai-photobooth.com/
+APP_ENV=production
+APP_URL=https://mirrorboothdubai.com
+APP_DEBUG=false
 
 APP_LOCALE=en
 APP_FALLBACK_LOCALE=en

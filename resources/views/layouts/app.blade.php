@@ -121,7 +121,15 @@
                     <div class="widget mb-5 mb-lg-0">
                         <h4 class="text-capitalize mb-3">Quick Links</h4>
                         <ul class="list-unstyled footer-menu lh-35">
-                            <li><a href="{{url('/contact')}}">Contact</a></li>
+                            <li><a href={{ route('contact') }}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="widget mb-5 mb-lg-0">
+                        <h4 class="text-capitalize mb-3">Quick Links</h4>
+                        <ul class="list-unstyled footer-menu lh-35">
+                            <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
                     </div>
                 </div>
