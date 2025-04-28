@@ -1,9 +1,78 @@
 @extends('layouts.app')
+@section('head')
+    @php
+        // Structured data for the video (only if a video exists)
+        if (!empty($service->videos_link)) {
+            $url = $service->videos_link;
+            $videoId = null;
+
+            // Extract the YouTube video ID
+            if (preg_match('/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+                $videoId = $matches[1];
+            }
+
+            if ($videoId) {
+                $structuredData = [
+                    "@context" => "http://schema.org",
+                    "@type" => "VideoObject",
+                    "name" => $service->name,
+                    "description" => strip_tags($service->description),
+                    "thumbnailUrl" => asset('uploads/services/thumb/large/'.$service->image),
+                    "contentUrl" => "https://www.youtube.com/watch?v=".$videoId,
+                    "embedUrl" => "https://www.youtube.com/embed/".$videoId,
+                    "uploadDate" => now()->toIso8601String(),
+                ];
+            }
+        }
+
+        // Structured data for the primary image
+        $imageStructuredData = [
+            "@context" => "http://schema.org",
+            "@type" => "ImageObject",
+            "url" => asset('uploads/services/thumb/large/'.$service->image),
+            "height" => 600, // You can adjust the height
+            "width" => 800,  // You can adjust the width
+            "caption" => $service->image_alt_text ?? 'Service Image', // Alt text or caption
+        ];
+
+        // Additional images structured data (for gallery images)
+        $galleryStructuredData = [];
+        if (!empty($gallery_images) && count($gallery_images) > 0) {
+            foreach ($gallery_images as $image) {
+                $galleryStructuredData[] = [
+                    "@context" => "http://schema.org",
+                    "@type" => "ImageObject",
+                    "url" => asset('uploads/services/gallery/'.$image),
+                    "height" => 600, // Adjust the height
+                    "width" => 800,  // Adjust the width
+                    "caption" => $service->image_alt_text ?? 'Gallery Image',
+                ];
+            }
+        }
+    @endphp
+
+    @isset($structuredData)
+        <script type="application/ld+json">
+            {{ json_encode($structuredData) }}
+        </script>
+    @endisset
+
+    @isset($imageStructuredData)
+        <script type="application/ld+json">
+            {{ json_encode($imageStructuredData) }}
+        </script>
+    @endisset
+
+    @isset($galleryStructuredData)
+        <script type="application/ld+json">
+            {{ json_encode($galleryStructuredData) }}
+        </script>
+    @endisset
+@endsection
 
 @section('content')
 <section class="section-3 py-5">
 </section>
-
 <section class="section-8 py-5">
     <div class="container py-2">
         <div class="row">
@@ -22,24 +91,30 @@
                         // Extract video ID from the YouTube link
                         $url = $service->videos_link;
                         $videoId = null;
-
+            
                         if (preg_match('/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $url, $matches)) {
                             $videoId = $matches[1];
                         }
                     @endphp
-
-                    @if(!(empty($videoId)))
-                    <div class="image-red-background">
-                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
-                    </div>
+            
+                    @if(!empty($videoId))
+                        <div class="image-red-background">
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     @else
+                        <!-- If there is no valid video link, show thumbnail -->
+                        <div class="image-red-background">
+                            <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" class="w-100">
+                        </div>
+                    @endif
+                @else
+                    <!-- If no video link is saved, show the thumbnail image -->
                     <div class="image-red-background">
                         <img src="{{ asset('uploads/services/thumb/large/'.$service->image) }}" class="w-100">
                     </div>
-                    @endif
                 @endif
             </div>
-
+            
             <div class="col-md-6 col-12 d-flex align-items-center">
                 <div class="about-block text-center text-md-left">
                     {!! $service->description !!}
@@ -101,9 +176,6 @@
 @endif
 
 @include('common.review')
-
-
 @include('common.company')
-
 
 @endsection
