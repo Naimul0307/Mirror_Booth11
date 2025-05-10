@@ -9,22 +9,36 @@
     RewriteCond %{HTTP_HOST} ^www\.mirrorboothdubai\.com$ [NC]
     RewriteRule ^ https://mirrorboothdubai.com%{REQUEST_URI} [L,R=301]
 
-    # Handle Authorization Header
+    # Authorization header support
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Redirect Trailing Slashes If Not A Folder...
+    # Remove trailing slashes if not a directory
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send Requests To Front Controller...
+    # Laravel front controller
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
 
-<Files .env>
-    Order Allow,Deny
+# Block sensitive files
+<FilesMatch "^\.env$">
+    Order allow,deny
     Deny from all
-</Files>
+</FilesMatch>
+
+<FilesMatch "\.(env|json|lock|git|htaccess|log|md|xml|yml|yaml|ini)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Make sitemap.xml publicly accessible
+<FilesMatch "sitemap\.xml$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+
