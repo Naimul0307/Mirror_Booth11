@@ -30,6 +30,21 @@ body, html {
     z-index: 99;
 }
 
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    overflow: hidden;
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .section-2 {
     background-color: rgb(209,19,115);
 }
@@ -69,19 +84,6 @@ body, html {
 }
 .image-red-background{
     position: relative;
-}
-.image-red-background::before {
-    border: 1px solid red;
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    -webkit-transform: translateX(3%) translateY(-4%);
-    transform: translateX(3%) translateY(-4%);
-    background-color: #e12454;
-    z-index: -1;
 }
 
 .section-3{
@@ -143,8 +145,6 @@ body, html {
 
 
 .section-4{
-    background-image: url('../images/banner22.jpg');
-    background-position: center center;
     min-height: 300px;
     position: relative;
     display: flex;
@@ -337,27 +337,24 @@ body, html {
      text-align: center;
 }
 
-
-.section-8{
+.section-8 {
     background-color: white;
 }
 
-/* Ensure the iframe is responsive */
-.responsive-iframe {
-    width: 100%;
-    height: 315px; /* You can adjust the height as needed */
+/* Shared styling block for image or video wrapper */
+.section-8 .image-red-background {
+    margin-bottom: 1.5rem;
 }
 
-
-/* Make the container responsive */
-.section-8 .image-red-background {
+/* Video wrapper: 16:9 aspect ratio using padding-top hack */
+.section-8 .video-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 56.25%; /* 16:9 ratio */
     overflow: hidden;
 }
 
-/* Style the iframe to fill the container */
+/* Responsive YouTube iframe inside .video-wrapper */
 .section-8 .responsive-iframe {
     position: absolute;
     top: 0;
@@ -366,6 +363,20 @@ body, html {
     height: 100%;
 }
 
+/* Image wrapper: display image naturally */
+.section-8 .image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.section-8 .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px; /* Optional */
+}
 
 .slick-dots{
     display: none !important;
@@ -377,6 +388,14 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+/* Center and stretch slider if fewer than 4 items */
+.services-slider.few-items {
+    justify-content: center;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 
@@ -394,64 +413,48 @@ body, html {
 
 /* Each slider item */
 .slider-item {
-    flex-shrink: 0; /* Prevent shrinking of flex items */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Hide anything outside the bounds */
-    width: 600px; /* Fixed width for each image */
-    height: 300px; /* Fixed height for each image */
-    background-color: white; /* White background to create white space between images */
-    padding: 10px; /* Creates padding inside the slider-item for white space around the image */
-    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+    flex-shrink: 0; /* Prevent the item from shrinking in a flex layout */
+    width: 350px; /* Fixed width */
+    height: 250px; /* Fixed height */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex; /* Center image inside */
+    align-items: center;
+    justify-content: center;
 }
 
-/* Image styles */
 .slider-item img {
-    width: 100%; /* Image takes full width of its container */
-    height: 100%; /* Image takes full height of its container */
-    object-fit: cover; /* Ensure the image maintains aspect ratio */
-    border-radius: 10px; /* Ensure the image itself has rounded corners */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fills the container while maintaining aspect ratio */
+    border-radius: 10px;
+    display: block; /* Removes bottom spacing for images */
 }
 
 .slider-item:hover {
     transform: scale(1.05); /* Slight zoom on hover */
     z-index: 1; /* Bring the hovered image to the front */
 }
-/* Position the arrows in the middle */
-.slick-prev,
-.slick-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); /* Center vertically */
-    color: white;
-    padding: 20px;
-    font-size: 24px;
-    z-index: 10; /* Ensure they appear above the slider */
-    transition: background-color 0.3s ease;
-}
 
-/* Left arrow styling */
-.slick-prev {
-    left:-17px;;
-}
 
-/* Right arrow styling */
-.slick-next {
-    right: 0px;
-}
-
-/* Optional: If you want to have different colors or additional hover effects */
 .slick-prev i,
 .slick-next i {
-    font-size: 30px; /* Icon size */
-    color: rgb(255, 255, 255); /* Default icon color */
-    transition: color 0.3s ease; /* Smooth transition on hover */
+    margin-top: 90px;
+    padding: 10px;
+    font-size: 30px;
+    color: rgb(215 44 95);
+    transition: color 0.3s ease;
 }
 
 /* Change icon color when hovered */
 .slick-prev:hover i,
 .slick-next:hover i {
-    color: rgb(245, 56, 113); /* Red color on hover (you can change it to any color) */
+    color: rgb(245, 56, 113);
 }
+
 
 /* WhatsApp Button CSS */
 .whatsapp-button {
@@ -520,10 +523,6 @@ body, html {
         font-size: 40px; /* Adjust title font size */
     }
 
-    .section-8 .image-red-background {
-        padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
-    }
-
     .card-title a {
         font-size: 20px !important; /* Further reduce font size */
     }
@@ -546,12 +545,6 @@ body, html {
     .section-4 .help-container {
         padding-left: 20px;
         padding-right: 20px;
-    }
-    .section-8 .image-red-background {
-        padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
-    }
-    .image-red-background {
-        margin-bottom: 1.5rem;
     }
 
     .about-block {
@@ -668,4 +661,10 @@ body, html {
         padding: 8px;
     }
 }
+.section-4 .mt-4 {
+    margin-top: 6.5rem !important;
+}
 
+.section-4 .card-text {
+    margin-top: 125px;
+}

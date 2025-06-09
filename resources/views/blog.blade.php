@@ -21,11 +21,10 @@
 </section>
 
 @if($blogs->isNotEmpty())
-    <section class="section-3 py-5">
+    <section class="section-4 py-5">
         <div class="container">
             <div class="cards">
                 <div class="row">
-                    {{-- Display the first half of services --}}
                     @foreach ($blogs as $blog)
                     <div class="col-md-3 col-sm-6 mb-4">
                         <div class="card border-0 text-center">

@@ -85,35 +85,30 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-12">
-                @if(!empty($service->videos_link))
-                    @php
-                        // Extract video ID from the YouTube link
-                        $url = $service->videos_link;
-                        $videoId = null;
-            
-                        if (preg_match('/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $url, $matches)) {
-                            $videoId = $matches[1];
-                        }
-                    @endphp
-            
-                    @if(!empty($videoId))
-                        <div class="image-red-background">
-                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    @else
-                        <!-- If there is no valid video link, show thumbnail -->
-                        <div class="image-red-background">
-                            <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" class="w-100">
-                        </div>
-                    @endif
-                @else
-                    <!-- If no video link is saved, show the thumbnail image -->
-                    <div class="image-red-background">
-                        <img src="{{ asset('uploads/services/thumb/large/'.$service->image) }}" class="w-100">
-                    </div>
-                @endif
-            </div>
+           <div class="col-md-6 col-12">
+            @php
+                $videoId = null;
+        
+                if (!empty($service->videos_link)) {
+                    $url = $service->videos_link;
+        
+                    if (preg_match('/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+                        $videoId = $matches[1];
+                    }
+                }
+            @endphp
+        
+            @if(!empty($videoId))
+                <div class="image-red-background video-wrapper">
+                    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            @else
+                <div class="image-red-background image-wrapper">
+                    <img src="{{ asset('uploads/services/thumb/small/'.$service->image) }}" class="w-100" alt="{{ $service->image_alt_text ?? 'Service Image' }}">
+                </div>
+            @endif
+        </div>
+
             
             <div class="col-md-6 col-12 d-flex align-items-center">
                 <div class="about-block text-center text-md-left">
@@ -131,7 +126,6 @@
                 <div class="row justify-content-center">
                     @foreach ($additional_videos_links as $link)
                         @php
-                            // Extract video ID from the additional YouTube link
                             $videoUrl = $link;
                             $additionalVideoId = null;
 
@@ -142,8 +136,10 @@
 
                         @if(!empty($additionalVideoId))
                             <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-                                <div class="card border-0">
-                                    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ $additionalVideoId }}" frameborder="0" allowfullscreen></iframe>
+                                <div class="card border-0 p-0 w-100">
+                                    <div class="video-wrapper">
+                                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ $additionalVideoId }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
                                 </div>
                             </div>
                         @endif
@@ -158,22 +154,24 @@
 <section class="section-6 py-5">
     <div class="container">
         <div class="cards">
-            <!-- Slider wrapper -->
-            <div class="services-slider">
+            @php $imageCount = count($gallery_images); @endphp
+
+            <div class="services-slider {{ $imageCount < 4 ? 'few-items' : '' }}">
                 @foreach ($gallery_images as $image)
-                <div class="slider-item">
-                    @if(!empty($image))
-                    <img src="{{ asset('uploads/services/gallery/'.$image) }}" class="img-fluid" alt="{{ $service->image_alt_text ?? 'Image' }}">
-                    @else
-                    <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="Image">
-                    @endif
-                </div>
+                    <div class="slider-item">
+                        @if(!empty($image))
+                            <img src="{{ asset('uploads/services/gallery/'.$image) }}" class="img-fluid" alt="{{ $service->image_alt_text ?? 'Image' }}">
+                        @else
+                            <img src="{{ asset('uploads/placeholder.jpg') }}" class="card-img-top" alt="Image">
+                        @endif
+                    </div>
                 @endforeach
             </div>
         </div>
     </div>
 </section>
 @endif
+
 
 @include('common.review')
 @include('common.company')
