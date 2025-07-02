@@ -12,10 +12,10 @@
                 <div class="divider mb-3"></div>
             </div>
             <div class="mt-2 mb-3 text-muted">ALL SERVICES RENTAL DUBAI</div>
-
-            <div class="mt-2 mb-3 text-muted">Award Winning Interactive Photo Booth Services In Dubai</div>
-            <p>A professional and well-experienced photobooth supplier in the UAE. We deliver client satisfaction and event perfection in all of our services.
-            <br>Our goal is to make memorable and meaningful events for everyone.</p>
+            <div class="mt-2 mb-3 text-muted">Award-Winning Corporate Photo Booth & Game Rentals in Dubai</div>
+            <p> A trusted and professional provider in the UAE, delivering engaging photo booths and interactive games for events. 
+            <br>We focus on client satisfaction and event success.
+            <br>Our goal is to create memorable, branded experiences for every occasion.</p>
         </div>
     </div>
 </section>

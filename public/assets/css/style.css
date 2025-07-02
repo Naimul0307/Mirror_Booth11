@@ -413,15 +413,15 @@ body, html {
 
 /* Each slider item */
 .slider-item {
-    flex-shrink: 0; /* Prevent the item from shrinking in a flex layout */
-    width: 350px; /* Fixed width */
+    flex-shrink: 0 !important; /* Prevent the item from shrinking in a flex layout */
+    width: 250px !important;
     height: 250px; /* Fixed height */
     border-radius: 10px;
     overflow: hidden;
     background-color: white;
     padding: 10px;
     box-sizing: border-box;
-    display: flex; /* Center image inside */
+    display: flex !important; /* Center image inside */
     align-items: center;
     justify-content: center;
 }

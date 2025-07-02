@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ServicesController extends Controller
 {
     public function index()  {
-        $services = Service::where('status',1)->orderBy('id','asc')->get();
+        $services = Service::where('status',1)->orderBy('id','desc')->get();
         $data['services'] = $services;
         $data['meta_title'] = 'All SERVICES | MIRROR BOOTH EVENT SERVICES L.L.C.-DUBAI';
         $data['meta_description'] = 'EXPLORE OUR FULL RANGE OF PROFESSIONAL EVENT SERVICES IN DUBAI,UAE';
