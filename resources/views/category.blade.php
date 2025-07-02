@@ -15,6 +15,7 @@
             {{-- @if(!empty($category))
             <div class="mt-2 mb-3 text-muted">{{ $category->name }} RENTAL</div>
             @endif --}}
+            @if(!empty($category))
             @php
                 $name = $category->name;
                 if (str_contains($name, 'Dubai')) {
@@ -23,6 +24,7 @@
                     $name .= ' Rental';
                 }
             @endphp
+            @endif
             <div class="mt-2 mb-3 text-muted">{{ $name }}</div>
 
             <div class="mt-2 mb-3 text-muted">Award-Winning Corporate Photo Booth & Game Rentals in Dubai</div>
